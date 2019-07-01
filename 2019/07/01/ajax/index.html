@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | Evan Miao</title>
+  <title>AJAX请求的四个步骤 | Evan Miao</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+  <meta name="description" content="AJAX的全称：Asynchronous JavaScript and XML(异步的JavaScript和XML) AJAX不是某种编程语言是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
+<meta name="keywords" content="AJAX,JavaScript,学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/06/21/hello-world/index.html">
+<meta property="og:title" content="AJAX请求的四个步骤">
+<meta property="og:url" content="http://yoursite.com/2019/07/01/ajax/index.html">
 <meta property="og:site_name" content="Evan Miao">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="AJAX的全称：Asynchronous JavaScript and XML(异步的JavaScript和XML) AJAX不是某种编程语言是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-01T13:38:11.897Z">
+<meta property="og:updated_time" content="2019-07-01T13:52:37.480Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="AJAX请求的四个步骤">
+<meta name="twitter:description" content="AJAX的全称：Asynchronous JavaScript and XML(异步的JavaScript和XML) AJAX不是某种编程语言是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
   
     <link rel="alternative" href="/atom.xml" title="Evan Miao" type="application/atom+xml">
   
@@ -154,41 +155,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ajax" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      AJAX请求的四个步骤
     </h1>
   
 
         
-        <a href="/2019/06/21/hello-world/" class="archive-article-date">
-  	<time datetime="2019-06-21T10:49:39.694Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-21</time>
+        <a href="/2019/07/01/ajax/" class="archive-article-date">
+  	<time datetime="2019-07-01T09:38:30.301Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        <p>AJAX的全称：<br>Asynchronous JavaScript and XML<br>(异步的JavaScript和XML)</p>
+<p>AJAX不是某种编程语言<br>是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术</p>
 <a id="more"></a>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<h1 id="AJAX请求的四个步骤"><a href="#AJAX请求的四个步骤" class="headerlink" title="AJAX请求的四个步骤"></a>AJAX请求的四个步骤</h1><h2 id="1-创建XMLHttpRequest对象"><a href="#1-创建XMLHttpRequest对象" class="headerlink" title="1.创建XMLHttpRequest对象"></a>1.创建<code>XMLHttpRequest</code>对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var request = new XMLHttpRequest();</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var request;</span><br><span class="line">if(window.XMLHttpRequest)&#123;</span><br><span class="line">    request = new XMLHttpRequest();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    request = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>IE5或IE6兼容处理</p>
+<h2 id="2-配置请求信息"><a href="#2-配置请求信息" class="headerlink" title="2.配置请求信息"></a>2.配置请求信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(method,url,async)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>method</code>：请求方式 —— GET / POST<br><code>url</code>：请求的地址<br><code>async</code>：true（异步）或 false（同步）</p>
+</blockquote>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.open(&quot;GET&quot;,&quot;server.php?num=100&quot;);</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>使用<code>GET</code>请求时参数加在<code>url</code>后面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request.open(&quot;POST&quot;,&quot;server.php&quot;);</span><br><span class="line">request.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>POST</code>请求时需要配置请求头信息</p>
+<h2 id="3-发送请求"><a href="#3-发送请求" class="headerlink" title="3.发送请求"></a>3.发送请求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">send(string)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>send</code> 方法发送请求，并接受一个可选参数</p>
+</blockquote>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.send();</span><br></pre></td></tr></table></figure>
+
+<p><code>GET</code>请求可以不传或传入 <code>null</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.send(&quot;num=100&quot;);</span><br></pre></td></tr></table></figure>
+
+<p><code>POST</code>请求下可以将请求体的参数传入</p>
+<h2 id="4-创建响应函数"><a href="#4-创建响应函数" class="headerlink" title="4.创建响应函数"></a>4.创建响应函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">request.onreadystatechange = function()&#123;</span><br><span class="line">    if(request.readyState == 4 &amp;&amp; request.status == 200)&#123;</span><br><span class="line">        console.log(request.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>responseText</code>：获得字符串形式的相应数据。<br><code>responsXML</code>：获得XML形式的相应数据。<br><code>status和statusText</code>：以数字和文本形式返回http状态码。<br><code>getAllResponseHeader()</code>：获取所有的响应报头。<br><code>getResponseHeader()</code>：查询响应中的某个字段的值。  </p>
+</blockquote>
+<h3 id="readyState属性："><a href="#readyState属性：" class="headerlink" title="readyState属性："></a>readyState属性：</h3><blockquote>
+<p>响应返回成功的时候得到通知。<br>0：请求未初始化，open还没有调用。<br>1：服务器连接已建立，open已经调用了。<br>2：请求已经接收，也就是接收到头信息了。<br>3：请求处理中，也就是接收到响应主体了。<br>4：请求已完成，且响应已就绪，也就是响应完成了。</p>
+</blockquote>
+<h3 id="http状态码："><a href="#http状态码：" class="headerlink" title="http状态码："></a>http状态码：</h3><blockquote>
+<p>HTTP状态码由3位数字构成，其中首位数字定义了状态码的类型：<br>1XX：信息类，表示收到Web浏览器请求，正在进一步的处理中<br>2XX：成功，表示用户请求被正确接收，理解和处理。例如：200 OK<br>3XX：重定向，表示请求没有成功，客户必须采取进一步的动作<br>4XX：客户端错误，表示客户端提交的请求有错误，例如：404 NOT Found，意味着请求中所引用的文档不存在。<br>5XX：服务器错误，表示服务器不能完成对请求的处理。例如：500</p>
+</blockquote>
 
       
 
@@ -197,6 +228,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">AJAX</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -247,7 +297,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/06/21/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/07/01/ajax/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -261,15 +311,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/01/ajax/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          AJAX请求的四个步骤
-        
-      </div>
-    </a>
   
+    <a href="/2019/06/21/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -294,7 +340,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AJAX请求的四个步骤"><span class="toc-number">1.</span> <span class="toc-text">AJAX请求的四个步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建XMLHttpRequest对象"><span class="toc-number">1.1.</span> <span class="toc-text">1.创建XMLHttpRequest对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置请求信息"><span class="toc-number">1.2.</span> <span class="toc-text">2.配置请求信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-发送请求"><span class="toc-number">1.3.</span> <span class="toc-text">3.发送请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-创建响应函数"><span class="toc-number">1.4.</span> <span class="toc-text">4.创建响应函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#readyState属性："><span class="toc-number">1.4.1.</span> <span class="toc-text">readyState属性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http状态码："><span class="toc-number">1.4.2.</span> <span class="toc-text">http状态码：</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
