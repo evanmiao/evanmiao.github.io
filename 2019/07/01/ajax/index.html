@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Evan Miao">
 <meta property="og:description" content="AJAX的全称：Asynchronous JavaScript and XML(异步的JavaScript和XML) AJAX不是某种编程语言是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-01T13:52:37.480Z">
+<meta property="og:updated_time" content="2019-07-01T14:08:20.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX请求的四个步骤">
 <meta name="twitter:description" content="AJAX的全称：Asynchronous JavaScript and XML(异步的JavaScript和XML) AJAX不是某种编程语言是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
@@ -175,7 +175,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>AJAX的全称：<br>Asynchronous JavaScript and XML<br>(异步的JavaScript和XML)</p>
+        <p>AJAX的全称：Asynchronous JavaScript and XML(异步的JavaScript和XML)</p>
 <p>AJAX不是某种编程语言<br>是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术</p>
 <a id="more"></a>
 
@@ -193,10 +193,10 @@
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.open(&quot;GET&quot;,&quot;server.php?num=100&quot;);</span><br></pre></td></tr></table></figure>
 
-<p>使用<code>GET</code>请求时参数加在<code>url</code>后面</p>
+<p>使用<code>GET</code>请求参数加在<code>url</code>后面</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request.open(&quot;POST&quot;,&quot;server.php&quot;);</span><br><span class="line">request.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);</span><br></pre></td></tr></table></figure>
 
-<p>使用<code>POST</code>请求时需要配置请求头信息</p>
+<p>使用<code>POST</code>请求需要配置请求头信息</p>
 <h2 id="3-发送请求"><a href="#3-发送请求" class="headerlink" title="3.发送请求"></a>3.发送请求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">send(string)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
@@ -205,10 +205,10 @@
 <hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.send();</span><br></pre></td></tr></table></figure>
 
-<p><code>GET</code>请求可以不传或传入 <code>null</code></p>
+<p>使用<code>GET</code>请求可以不传或传入 <code>null</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.send(&quot;num=100&quot;);</span><br></pre></td></tr></table></figure>
 
-<p><code>POST</code>请求下可以将请求体的参数传入</p>
+<p>使用<code>POST</code>请求可以将请求体的参数传入</p>
 <h2 id="4-创建响应函数"><a href="#4-创建响应函数" class="headerlink" title="4.创建响应函数"></a>4.创建响应函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">request.onreadystatechange = function()&#123;</span><br><span class="line">    if(request.readyState == 4 &amp;&amp; request.status == 200)&#123;</span><br><span class="line">        console.log(request.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
