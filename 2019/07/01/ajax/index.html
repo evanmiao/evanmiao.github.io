@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Evan Miao">
 <meta property="og:description" content="AJAX的全称：Asynchronous JavaScript and XML(异步的JavaScript和XML) AJAX不是某种编程语言是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-01T14:08:20.647Z">
+<meta property="og:updated_time" content="2019-07-17T14:35:28.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX请求的四个步骤">
 <meta name="twitter:description" content="AJAX的全称：Asynchronous JavaScript and XML(异步的JavaScript和XML) AJAX不是某种编程语言是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
@@ -54,7 +54,7 @@ var _hmt = _hmt || [];
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: url(/img/background.jpg) no-repeat 0 -45px"></div>
+<div class="overlay" style="background: url(/img/background.jpg) no-repeat center center; background-size: cover;"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -109,7 +109,7 @@ var _hmt = _hmt || [];
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: url(/img/background.jpg) no-repeat 0 -45px"></div>
+  	<div class="overlay js-overlay" style="background: url(/img/background.jpg) no-repeat center center; background-size: cover;"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -189,37 +189,37 @@ var _hmt = _hmt || [];
 <p>AJAX不是某种编程语言<br>是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术</p>
 <a id="more"></a>
 
-<h1 id="AJAX请求的四个步骤"><a href="#AJAX请求的四个步骤" class="headerlink" title="AJAX请求的四个步骤"></a>AJAX请求的四个步骤</h1><h2 id="1-创建XMLHttpRequest对象"><a href="#1-创建XMLHttpRequest对象" class="headerlink" title="1.创建XMLHttpRequest对象"></a>1.创建<code>XMLHttpRequest</code>对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var request = new XMLHttpRequest();</span><br></pre></td></tr></table></figure>
+<h2 id="1-创建XMLHttpRequest对象"><a href="#1-创建XMLHttpRequest对象" class="headerlink" title="1.创建XMLHttpRequest对象"></a>1.创建<code>XMLHttpRequest</code>对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br></pre></td></tr></table></figure>
 
 <hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var request;</span><br><span class="line">if(window.XMLHttpRequest)&#123;</span><br><span class="line">    request = new XMLHttpRequest();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    request = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>IE5或IE6兼容处理</p>
-<h2 id="2-配置请求信息"><a href="#2-配置请求信息" class="headerlink" title="2.配置请求信息"></a>2.配置请求信息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(method,url,async)</span><br></pre></td></tr></table></figure>
+<h2 id="2-配置请求信息"><a href="#2-配置请求信息" class="headerlink" title="2.配置请求信息"></a>2.配置请求信息</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(method,url,<span class="keyword">async</span>)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p><code>method</code>：请求方式 —— GET / POST<br><code>url</code>：请求的地址<br><code>async</code>：true（异步）或 false（同步）</p>
 </blockquote>
 <hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.open(&quot;GET&quot;,&quot;server.php?num=100&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"GET"</span>, <span class="string">"server.php?num=100"</span>);</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>GET</code>请求参数加在<code>url</code>后面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">request.open(&quot;POST&quot;,&quot;server.php&quot;);</span><br><span class="line">request.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"POST"</span>, <span class="string">"server.php"</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">"Content-type"</span>, <span class="string">"application/x-www-form-urlencoded"</span>);</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>POST</code>请求需要配置请求头信息</p>
-<h2 id="3-发送请求"><a href="#3-发送请求" class="headerlink" title="3.发送请求"></a>3.发送请求</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">send(string)</span><br></pre></td></tr></table></figure>
+<h2 id="3-发送请求"><a href="#3-发送请求" class="headerlink" title="3.发送请求"></a>3.发送请求</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">send(string)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p><code>send</code> 方法发送请求，并接受一个可选参数</p>
 </blockquote>
 <hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.send();</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>GET</code>请求可以不传或传入 <code>null</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.send(&quot;num=100&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send(<span class="string">"num=100"</span>);</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>POST</code>请求可以将请求体的参数传入</p>
-<h2 id="4-创建响应函数"><a href="#4-创建响应函数" class="headerlink" title="4.创建响应函数"></a>4.创建响应函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">request.onreadystatechange = function()&#123;</span><br><span class="line">    if(request.readyState == 4 &amp;&amp; request.status == 200)&#123;</span><br><span class="line">        console.log(request.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="4-创建响应函数"><a href="#4-创建响应函数" class="headerlink" title="4.创建响应函数"></a>4.创建响应函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p><code>responseText</code>：获得字符串形式的相应数据。<br><code>responsXML</code>：获得XML形式的相应数据。<br><code>status和statusText</code>：以数字和文本形式返回http状态码。<br><code>getAllResponseHeader()</code>：获取所有的响应报头。<br><code>getResponseHeader()</code>：查询响应中的某个字段的值。  </p>
@@ -359,7 +359,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AJAX请求的四个步骤"><span class="toc-number">1.</span> <span class="toc-text">AJAX请求的四个步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建XMLHttpRequest对象"><span class="toc-number">1.1.</span> <span class="toc-text">1.创建XMLHttpRequest对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置请求信息"><span class="toc-number">1.2.</span> <span class="toc-text">2.配置请求信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-发送请求"><span class="toc-number">1.3.</span> <span class="toc-text">3.发送请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-创建响应函数"><span class="toc-number">1.4.</span> <span class="toc-text">4.创建响应函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#readyState属性："><span class="toc-number">1.4.1.</span> <span class="toc-text">readyState属性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http状态码："><span class="toc-number">1.4.2.</span> <span class="toc-text">http状态码：</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建XMLHttpRequest对象"><span class="toc-number">1.</span> <span class="toc-text">1.创建XMLHttpRequest对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-配置请求信息"><span class="toc-number">2.</span> <span class="toc-text">2.配置请求信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-发送请求"><span class="toc-number">3.</span> <span class="toc-text">3.发送请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-创建响应函数"><span class="toc-number">4.</span> <span class="toc-text">4.创建响应函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#readyState属性："><span class="toc-number">4.1.</span> <span class="toc-text">readyState属性：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http状态码："><span class="toc-number">4.2.</span> <span class="toc-text">http状态码：</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
