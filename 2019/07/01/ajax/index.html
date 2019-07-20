@@ -93,18 +93,18 @@
   };
 </script>
 
-  <meta name="description" content="AJAX的全称：异步的JavaScript和XML(Asynchronous JavaScript and XML)  AJAX不是某种编程语言  是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
+  <meta name="description" content="AJAX的全称：异步的JavaScript和XML(Asynchronous JavaScript and XML) AJAX不是某种编程语言 是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
 <meta name="keywords" content="AJAX,JavaScript,学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AJAX请求的四个步骤">
 <meta property="og:url" content="http://yoursite.com/2019/07/01/ajax/index.html">
 <meta property="og:site_name" content="Evan Miao">
-<meta property="og:description" content="AJAX的全称：异步的JavaScript和XML(Asynchronous JavaScript and XML)  AJAX不是某种编程语言  是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
+<meta property="og:description" content="AJAX的全称：异步的JavaScript和XML(Asynchronous JavaScript and XML) AJAX不是某种编程语言 是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-18T04:30:23.876Z">
+<meta property="og:updated_time" content="2019-07-20T15:35:06.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX请求的四个步骤">
-<meta name="twitter:description" content="AJAX的全称：异步的JavaScript和XML(Asynchronous JavaScript and XML)  AJAX不是某种编程语言  是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
+<meta name="twitter:description" content="AJAX的全称：异步的JavaScript和XML(Asynchronous JavaScript and XML) AJAX不是某种编程语言 是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术">
 
 
 
@@ -373,7 +373,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-18 12:30:23" itemprop="dateModified" datetime="2019-07-18T12:30:23+08:00">2019-07-18</time>
+                <time title="修改时间：2019-07-20 23:35:06" itemprop="dateModified" datetime="2019-07-20T23:35:06+08:00">2019-07-20</time>
               </span>
             
           
@@ -412,21 +412,20 @@
       
 
       
-        <p align="center">AJAX的全称：异步的JavaScript和XML(Asynchronous JavaScript and XML)
-<br>
-AJAX不是某种编程语言
-<br>
-是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术</p>
+        <blockquote class="blockquote-center"><p>AJAX的全称：异步的JavaScript和XML(Asynchronous JavaScript and XML)</p>
+<p>AJAX不是某种编程语言</p>
+<p>是一种在无需重新加载整个网页的情况之下能够更新部分网页的技术</p>
+</blockquote>
 
 <a id="more"></a>
 
-<h2 id="1-创建XMLHttpRequest对象"><a href="#1-创建XMLHttpRequest对象" class="headerlink" title="1.创建XMLHttpRequest对象"></a>1.创建<code>XMLHttpRequest</code>对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br></pre></td></tr></table></figure>
+<h2 id="创建XMLHttpRequest对象"><a href="#创建XMLHttpRequest对象" class="headerlink" title="创建XMLHttpRequest对象"></a>创建<code>XMLHttpRequest</code>对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br></pre></td></tr></table></figure>
 
 <hr>
 <p>IE5或IE6兼容处理</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr;</span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-配置请求信息"><a href="#2-配置请求信息" class="headerlink" title="2.配置请求信息"></a>2.配置请求信息</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(method,url,<span class="keyword">async</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="配置请求信息"><a href="#配置请求信息" class="headerlink" title="配置请求信息"></a>配置请求信息</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open(method,url,<span class="keyword">async</span>)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p><code>method</code>：请求方式 —— GET / POST<br><code>url</code>：请求的地址<br><code>async</code>：true（异步）或 false（同步）</p>
@@ -438,7 +437,7 @@ AJAX不是某种编程语言
 <p>使用<code>POST</code>请求需要配置请求头信息</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">"POST"</span>, <span class="string">"server.php"</span>);</span><br><span class="line">xhr.setRequestHeader(<span class="string">"Content-type"</span>, <span class="string">"application/x-www-form-urlencoded"</span>);</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-发送请求"><a href="#3-发送请求" class="headerlink" title="3.发送请求"></a>3.发送请求</h2><blockquote>
+<h2 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h2><blockquote>
 <p><code>send</code> 方法发送请求，并接受一个可选参数</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">send(string)</span><br></pre></td></tr></table></figure>
@@ -448,19 +447,52 @@ AJAX不是某种编程语言
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
 
 <p>使用<code>POST</code>请求可以将请求体的参数传入</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send(<span class="string">"num=100"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.send(<span class="string">"name=evan&amp;num=100"</span>);</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-创建响应函数"><a href="#4-创建响应函数" class="headerlink" title="4.创建响应函数"></a>4.创建响应函数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(xhr.responseText);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="创建响应函数"><a href="#创建响应函数" class="headerlink" title="创建响应函数"></a>创建响应函数</h2><p>设置 <code>onreadystatechange</code> 的回调函数。在回调函数中，通常我们只需通过 <code>readyState === 4</code> 判断请求是否完成，如果已完成，再根据 <code>status === 200</code> 判断是否是一个成功的响应。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (xhr.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(xhr.responseText);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"发生错误："</span> + xhr.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p><code>responseText</code>：获得字符串形式的相应数据。<br><code>responsXML</code>：获得XML形式的相应数据。<br><code>status和statusText</code>：以数字和文本形式返回http状态码。<br><code>getAllResponseHeader()</code>：获取所有的响应报头。<br><code>getResponseHeader()</code>：查询响应中的某个字段的值。  </p>
-</blockquote>
-<h3 id="readyState属性："><a href="#readyState属性：" class="headerlink" title="readyState属性："></a>readyState属性：</h3><blockquote>
-<p>响应返回成功的时候得到通知。<br>0：请求未初始化，open还没有调用。<br>1：服务器连接已建立，open已经调用了。<br>2：请求已经接收，也就是接收到头信息了。<br>3：请求处理中，也就是接收到响应主体了。<br>4：请求已完成，且响应已就绪，也就是响应完成了。</p>
-</blockquote>
-<h3 id="http状态码："><a href="#http状态码：" class="headerlink" title="http状态码："></a>http状态码：</h3><blockquote>
-<p>HTTP状态码由3位数字构成，其中首位数字定义了状态码的类型：<br>1XX：信息类，表示收到Web浏览器请求，正在进一步的处理中<br>2XX：成功，表示用户请求被正确接收，理解和处理。例如：200 OK<br>3XX：重定向，表示请求没有成功，客户必须采取进一步的动作<br>4XX：客户端错误，表示客户端提交的请求有错误，例如：404 NOT Found，意味着请求中所引用的文档不存在。<br>5XX：服务器错误，表示服务器不能完成对请求的处理。例如：500</p>
-</blockquote>
+<ul>
+<li><code>responseText</code>：获得字符串形式的相应数据。  </li>
+<li><code>responsXML</code>：获得XML形式的相应数据。  </li>
+<li><code>status和statusText</code>：以数字和文本形式返回http状态码。   </li>
+<li><code>getAllResponseHeader()</code>：获取所有的响应报头。  </li>
+<li><code>getResponseHeader()</code>：查询响应中的某个字段的值。  </li>
+</ul>
+<h3 id="readyState-属性："><a href="#readyState-属性：" class="headerlink" title="readyState 属性："></a>readyState 属性：</h3><p>响应返回成功的时候得到通知。  </p>
+<ul>
+<li>0：请求未初始化，open还没有调用。  </li>
+<li>1：服务器连接已建立，open已经调用了。   </li>
+<li>2：请求已经接收，也就是接收到头信息了。  </li>
+<li>3：请求处理中，也就是接收到响应主体了。  </li>
+<li>4：请求已完成，且响应已就绪，也就是响应完成了。</li>
+</ul>
+<h3 id="HTTP-状态码："><a href="#HTTP-状态码：" class="headerlink" title="HTTP 状态码："></a>HTTP 状态码：</h3><p>HTTP状态码由3位数字构成，其中首位数字定义了状态码的类型：  </p>
+<ul>
+<li>1XX：信息类，表示收到Web浏览器请求，正在进一步的处理中  </li>
+<li>2XX：成功，表示用户请求被正确接收，理解和处理。例如：200 OK  </li>
+<li>3XX：重定向，表示请求没有成功，客户必须采取进一步的动作  </li>
+<li>4XX：客户端错误，表示客户端提交的请求有错误，例如：404 NOT Found，意味着请求中所引用的文档不存在。  </li>
+<li>5XX：服务器错误，表示服务器不能完成对请求的处理。例如：500</li>
+</ul>
+<h2 id="在-jQuery-中的用法"><a href="#在-jQuery-中的用法" class="headerlink" title="在 jQuery 中的用法"></a>在 jQuery 中的用法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    <span class="comment">// type: 类型， "POST" 或 "GET" ，默认为 "GET"</span></span><br><span class="line">    type: <span class="string">"POST"</span>,</span><br><span class="line">    <span class="comment">// url：发送请求的地址</span></span><br><span class="line">    url: <span class="string">"server.php"</span>,</span><br><span class="line">    <span class="comment">// data：是一个对象，连同请求发送到服务器的数据</span></span><br><span class="line">    data: &#123;</span><br><span class="line">        name: evan,</span><br><span class="line">        number: <span class="number">100</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 预期服务器返回的数据类型</span></span><br><span class="line">    dataType: <span class="string">"json"</span>,</span><br><span class="line">    <span class="comment">// 是一个方法，请求成功后的回调函数。传入返回后的数据，以及包含成功代码的字符串</span></span><br><span class="line">    success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (data.success) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(data.msg);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"出现错误："</span> + data.msg);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 是一个方法，请求失败时调用此函数。传入XMLHttpRequest对象</span></span><br><span class="line">    error: <span class="function"><span class="keyword">function</span>(<span class="params">jqXHR</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"发生错误："</span> + jqXHR.status);  </span><br><span class="line">    &#125;,     </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>具体的 <code>dataType</code> 解释：</p>
+<p>预期服务器返回的数据类型。如果不指定，jQuery 将自动根据 HTTP包 MIME信息来智能判断，比如 XML MIME类型就被识别为 XML 。在 1.4 中， JSON 就会生成一个 JavaScript 对象，而 script 则会执行这个脚本。随后服务器端返回的数据会根据这个值解析后，传递给回调函数。可用值:</p>
+<ul>
+<li><p><code>&quot;xml&quot;</code>：返回 XML 文档，可用 jQuery 处理。</p>
+</li>
+<li><p><code>&quot;html&quot;</code>：返回纯文本 HTML 信息；包含的 <code>script</code> 标签会在插入 <code>dom</code> 时执行。</p>
+</li>
+<li><p><code>&quot;script&quot;</code>：返回纯文本 JavaScript 代码。不会自动缓存结果。除非设置了 <code>&quot;cache&quot;</code> 参数。<strong>注意：</strong>在远程请求时(不在同一个域下)，所有 <code>POST</code> 请求都将转为 <code>GET</code> 请求。（因为将使用 <code>DOM</code> 的 <code>script</code> 标签来加载）</p>
+</li>
+<li><p><code>&quot;json&quot;</code>：返回 <code>JSON</code> 数据。</p>
+</li>
+<li><p><code>&quot;jsonp&quot;</code>：<code>JSONP</code> 格式。使用 <code>JSONP</code> 形式调用函数时，如 <code>&quot;myurl?callback=?&quot;</code> jQuery 将自动替换 <code>?</code> 为正确的函数名，以执行回调函数。</p>
+</li>
+<li><p><code>&quot;text&quot;</code>：返回纯文本字符串。</p>
+</li>
+</ul>
 
       
     </div>
@@ -590,7 +622,7 @@ AJAX不是某种编程语言
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -667,7 +699,7 @@ AJAX不是某种编程语言
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建XMLHttpRequest对象"><span class="nav-number">1.</span> <span class="nav-text">1.创建XMLHttpRequest对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-配置请求信息"><span class="nav-number">2.</span> <span class="nav-text">2.配置请求信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-发送请求"><span class="nav-number">3.</span> <span class="nav-text">3.发送请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-创建响应函数"><span class="nav-number">4.</span> <span class="nav-text">4.创建响应函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#readyState属性："><span class="nav-number">4.1.</span> <span class="nav-text">readyState属性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http状态码："><span class="nav-number">4.2.</span> <span class="nav-text">http状态码：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建XMLHttpRequest对象"><span class="nav-number">1.</span> <span class="nav-text">创建XMLHttpRequest对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置请求信息"><span class="nav-number">2.</span> <span class="nav-text">配置请求信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送请求"><span class="nav-number">3.</span> <span class="nav-text">发送请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建响应函数"><span class="nav-number">4.</span> <span class="nav-text">创建响应函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#readyState-属性："><span class="nav-number">4.1.</span> <span class="nav-text">readyState 属性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP-状态码："><span class="nav-number">4.2.</span> <span class="nav-text">HTTP 状态码：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-jQuery-中的用法"><span class="nav-number">5.</span> <span class="nav-text">在 jQuery 中的用法</span></a></li></ol></div>
             
 
           </div>
