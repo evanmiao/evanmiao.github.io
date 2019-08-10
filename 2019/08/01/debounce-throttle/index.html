@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Evan Miao">
 <meta property="og:description" content="函数防抖(debounce)与函数节流(throttle) 两者都是优化高频率执行 JS 代码的一种手段">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-08T15:10:31.958Z">
+<meta property="og:updated_time" content="2019-08-01T10:55:20.895Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 函数防抖与函数节流">
 <meta name="twitter:description" content="函数防抖(debounce)与函数节流(throttle) 两者都是优化高频率执行 JS 代码的一种手段">
@@ -358,23 +358,13 @@
                 
               
 
-              <time title="创建时间：2019-08-01 00:05:50" itemprop="dateCreated datePublished" datetime="2019-08-01T00:05:50+08:00">2019-08-01</time>
+              <time title="创建时间：2019-08-01 00:05:50 / 修改时间：18:55:20" itemprop="dateCreated datePublished" datetime="2019-08-01T00:05:50+08:00">2019-08-01</time>
             </span>
           
 
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-08 23:10:31" itemprop="dateModified" datetime="2019-08-08T23:10:31+08:00">2019-08-08</time>
-              </span>
             
           
 
@@ -451,7 +441,7 @@
 <h2 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h2><p>一些短时间内频繁触发的事件，如果在事件触发时执行代码块，会将代码块重复执行很多次。很可能造成浏览器卡顿，甚至崩溃。可通过函数防抖和函数节流来避免这种情况。</p>
 <h2 id="函数防抖-debounce"><a href="#函数防抖-debounce" class="headerlink" title="函数防抖(debounce)"></a>函数防抖(debounce)</h2><p>事件被触发指定时间后执行回调函数，如果事件在这指定时间内又被触发，则重新计时。</p>
 <p>实现思路：每次触发事件时都取消之前的延时调用方法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param fn &#123;function&#125; 回调函数（要防抖的函数）</span></span><br><span class="line"><span class="comment"> * @param delay &#123;number&#125; 规定的时间</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 取消之前的延时调用</span></span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">			fn.apply(<span class="keyword">this</span>, args);</span><br><span class="line">		&#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param fn &#123;function&#125; 回调函数（要防抖的函数）</span></span><br><span class="line"><span class="comment"> * @param delay &#123;number&#125; 规定的时间</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">args</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 取消之前的延时调用</span></span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            fn.apply(<span class="keyword">this</span>, args);</span><br><span class="line">        &#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="函数节流-throttle"><a href="#函数节流-throttle" class="headerlink" title="函数节流(throttle)"></a>函数节流(throttle)</h2><p>事件在指定时间内被触发多次只会执行一次回调函数。</p>
 <h3 id="定时器方案"><a href="#定时器方案" class="headerlink" title="定时器方案"></a>定时器方案</h3><p>实现思路：每次触发事件时都判断当前是否有等待执行的延时函数：</p>
@@ -889,13 +879,13 @@
     el: '#comments',
     verify: false,
     notify: false,
-    appId: 'Vuk48ahAvLJRsk6CBlC0q3YE-MdYXbMMI',
-    appKey: '9rlBM9cQ1gnN5QzU00I8nHCs',
+    appId: '2fyVQmlRvRllJ8iFMynpUqBu-MdYXbMMI',
+    appKey: '3si4tmbopkMdJCtS1XKG16p3',
     placeholder: 'Just go go',
     avatar: 'mm',
     meta: guest,
     pageSize: '10' || 10,
-    visitor: false,
+    visitor: true,
     lang: '' || 'zh-cn'
   });
 </script>
@@ -912,68 +902,6 @@
 
 
   
-  
-  <script>
-    
-    function addCount(Counter) {
-      var $visitors = $('.leancloud_visitors');
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
-        .done(function({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', '/classes/Counter/' + counter.objectId, JSON.stringify({ time: { '__op': 'Increment', 'amount': 1 } }))
-            
-              .done(function() {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.time + 1);
-              })
-            
-              .fail(function ({ responseJSON }) {
-                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
-              })
-          } else {
-            
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! More info at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see how to solve it here: https://github.com/theme-next/hexo-leancloud-counter-security. \n However, you can still use LeanCloud without security, by setting `security` option to `false`.');
-            
-          }
-        })
-        .fail(function ({ responseJSON }) {
-          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
-        });
-    }
-    
-
-    $(function() {
-      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'Vuk48ahAvLJRsk6CBlC0q3YE-MdYXbMMI')
-        .done(function({ api_server }) {
-          var Counter = function(method, url, data) {
-            return $.ajax({
-              method: method,
-              url: 'https://' + api_server + '/1.1' + url,
-              headers: {
-                'X-LC-Id': 'Vuk48ahAvLJRsk6CBlC0q3YE-MdYXbMMI',
-                'X-LC-Key': '9rlBM9cQ1gnN5QzU00I8nHCs',
-                'Content-Type': 'application/json',
-              },
-              data: data
-            });
-          };
-          
-            const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
-            if (localhost.test(document.URL)) return;
-            addCount(Counter);
-          
-        });
-    });
-  </script>
-
-
 
   
 
