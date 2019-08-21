@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Evan Miao">
 <meta property="og:description" content="正则表达式（regular expression）是用于匹配字符串中字符组合的模式。在 JavaScript中，正则表达式也是对象，其体系参照 Perl 5 建立。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-21T15:38:48.944Z">
+<meta property="og:updated_time" content="2019-08-21T16:41:08.202Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
 <meta name="twitter:description" content="正则表达式（regular expression）是用于匹配字符串中字符组合的模式。在 JavaScript中，正则表达式也是对象，其体系参照 Perl 5 建立。">
@@ -373,7 +373,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-21 23:38:48" itemprop="dateModified" datetime="2019-08-21T23:38:48+08:00">2019-08-21</time>
+                <time title="修改时间：2019-08-22 00:41:08" itemprop="dateModified" datetime="2019-08-22T00:41:08+08:00">2019-08-22</time>
               </span>
             
           
@@ -442,71 +442,63 @@
       
 
       
-        <blockquote class="blockquote-center"><p>正则表达式（regular expression）是用于匹配字符串中字符组合的模式。在 JavaScript中，正则表达式也是对象，其体系参照 Perl 5 建立。</p>
+        <blockquote class="blockquote-center"><p>正则表达式（regular expression）是用于匹配字符串中字符组合的模式。<br>在 JavaScript中，正则表达式也是对象，其体系参照 Perl 5 建立。</p>
 </blockquote>
 
 <a id="more"></a>
 
-<h2 id="创建正则表达式的方法"><a href="#创建正则表达式的方法" class="headerlink" title="创建正则表达式的方法"></a>创建正则表达式的方法</h2><ol>
+<h2 id="创建正则表达式"><a href="#创建正则表达式" class="headerlink" title="创建正则表达式"></a>创建正则表达式</h2><ol>
 <li><p>使用一个正则表达式字面量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var re = /xxx/</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/xxx/</span>;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>调用 RegExp 对象的构造函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var re = new RegExp(&apos;xxx&apos;)</span><br></pre></td></tr></table></figure>
+<li><p>调用 <code>RegExp</code> 对象的构造函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">'xxx'</span>);</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <p>两种方法主要区别是：第一种方法在引擎编译代码时，就会新建正则表达式，第二种方法在运行时新建正则表达式，所以前者的效率较高。而且，前者比较便利和直观，所以实际应用中，基本上都采用字面量定义正则表达式。</p>
-<h2 id="正则表达式的实例属性"><a href="#正则表达式的实例属性" class="headerlink" title="正则表达式的实例属性"></a>正则表达式的实例属性</h2><p>分为两类</p>
+<h3 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h3><p>分为两类</p>
 <ol>
-<li>修饰符（只读）<br>RegExp.prototype.ignoreCase：返回一个布尔值，表示是否设置了i修饰符。用于忽略字符串大小写。<br>RegExp.prototype.global：返回一个布尔值，表示是否设置了g修饰符。用于全局匹配。<br>RegExp.prototype.multiline：返回一个布尔值，表示是否设置了m修饰符。用于设置匹配为多行模式。</li>
-<li>其他属性<br>RegExp.prototype.lastIndex：返回一个数值，表示下一次开始搜索的位置。该属性可读写，但是只在进行连续搜索时有意义，详细介绍请看后文。<br>RegExp.prototype.source：返回正则表达式的字符串形式（不包括反斜杠），该属性只读。</li>
+<li>修饰符（只读）<br><code>RegExp.prototype.ignoreCase</code>：返回一个布尔值，表示是否设置了 <code>i</code> 修饰符。用于忽略字符串大小写。<br><code>RegExp.prototype.global</code>：返回一个布尔值，表示是否设置了 <code>g</code> 修饰符。用于全局匹配。<br><code>RegExp.prototype.multiline</code>：返回一个布尔值，表示是否设置了 <code>m</code> 修饰符。用于设置匹配为多行模式。</li>
+<li>其他属性<br><code>RegExp.prototype.lastIndex</code>：返回一个数值，表示下一次开始搜索的位置。该属性可读写，但是只在进行连续搜索时有意义，详细介绍请看后文。<br><code>RegExp.prototype.source</code>：返回正则表达式的字符串形式（不包括反斜杠），该属性只读。</li>
 </ol>
-<h2 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h2><h3 id="1-RegExp-prototype-test"><a href="#1-RegExp-prototype-test" class="headerlink" title="1. RegExp.prototype.test()"></a>1. RegExp.prototype.test()</h3><p>test 方法返回布尔值，表示当前模式是否能匹配参数字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/a/.test(&apos;and&apos;) // true</span><br></pre></td></tr></table></figure>
+<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><ul>
+<li><p><strong>RegExp.prototype.test()</strong><br><code>test</code> 方法返回布尔值，表示当前模式是否能匹配参数字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/a/.test(<span class="string">'and'</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>RegExp.prototype.exec()</strong><br><code>exec</code> 方法，用来返回匹配结果<br>如果发现匹配，就返回一个数组，成员是匹配成功的子字符串，否则返回 <code>null</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/a/.exec(<span class="string">'adbca'</span>);</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-RegExp-prototype-exec"><a href="#2-RegExp-prototype-exec" class="headerlink" title="2. RegExp.prototype.exec()"></a>2. RegExp.prototype.exec()</h3><p>exec方法，用来返回匹配结果<br>如果发现匹配，就返回一个数组，成员是匹配成功的子字符串，否则返回null</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/a/.exec(&apos;adbca&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>如果正则表示式包含圆括号（即含有“组匹配”），则返回的数组会包括多个成员。第一个成员是整个匹配成功的结果，后面的成员就是圆括号对应的匹配成功的组。也就是说，第二个成员对应第一个括号，第三个成员对应第二个括号，以此类推。整个数组的length属性等于组匹配的数量再加1。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String.prototype.match()：返回一个数组，成员是所有匹配的子字符串。</span><br><span class="line">String.prototype.search()：按照给定的正则表达式进行搜索，返回一个整数，表示匹配开始的位置。</span><br><span class="line">String.prototype.replace()：按照给定的正则表达式进行替换，返回替换后的字符串。</span><br><span class="line">String.prototype.split()：按照给定规则进行字符串分割，返回一个数组，包含分割后的各个成员。</span><br></pre></td></tr></table></figure>
-
+</li>
+</ul>
+<p>如果正则表示式包含圆括号（即含有“组匹配”），则返回的数组会包括多个成员。第一个成员是整个匹配成功的结果，后面的成员就是圆括号对应的匹配成功的组。也就是说，第二个成员对应第一个括号，第三个成员对应第二个括号，以此类推。整个数组的 <code>length</code> 属性等于组匹配的数量再加 1 。</p>
+<p><code>String.prototype.match()</code>：返回一个数组，成员是所有匹配的子字符串。<br><code>String.prototype.search()</code>：按照给定的正则表达式进行搜索，返回一个整数，表示匹配开始的位置。<br><code>String.prototype.replace()</code>：按照给定的正则表达式进行替换，返回替换后的字符串。<br><code>String.prototype.split()</code>：按照给定规则进行字符串分割，返回一个数组，包含分割后的各个成员。</p>
 <hr>
-<h2 id="字面量字符和元字符"><a href="#字面量字符和元字符" class="headerlink" title="字面量字符和元字符"></a>字面量字符和元字符</h2><h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><ol>
-<li><p>点字符（.)<br>匹配除回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符。</p>
-</li>
-<li><p>位置字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">^ 表示字符串的开始位置</span><br><span class="line">$ 表示字符串的结束位置</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>选择符（|）<br>表示“或关系”</p>
-</li>
-<li><p>转义符<br>匹配元字符本身可以在它们前面加反斜杠<br>构造函数需要两次转义</p>
-</li>
-<li><p>特殊字符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\cX 表示Ctrl-[X]，其中的X是A-Z之中任一个英文字母，用来匹配控制字符。</span><br><span class="line">[\b] 匹配退格键(U+0008)，不要与\b混淆。</span><br><span class="line">\n 匹配换行键。</span><br><span class="line">\r 匹配回车键。</span><br><span class="line">\t 匹配制表符 tab（U+0009）。</span><br><span class="line">\v 匹配垂直制表符（U+000B）。</span><br><span class="line">\f 匹配换页符（U+000C）。</span><br><span class="line">\0 匹配null字符（U+0000）。</span><br><span class="line">\xhh 匹配一个以两位十六进制数（\x00-\xFF）表示的字符。</span><br><span class="line">\uhhhh 匹配一个以四位十六进制数（\u0000-\uFFFF）表示的 Unicode 字符。</span><br></pre></td></tr></table></figure>
-
-</li>
+<h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h2><ol>
+<li>点字符<br><code>.</code> 匹配除回车（<code>\r</code>）、换行（<code>\n</code>） 、行分隔符（<code>\u2028</code>）和段分隔符（<code>\u2029</code>）以外的所有字符。</li>
+<li>位置字符<br><code>^</code> 表示字符串的开始位置<br><code>$</code> 表示字符串的结束位置</li>
+<li>选择符<br><code>|</code> 表示“或关系”</li>
+<li>转义符<br>匹配元字符本身可以在它们前面加反斜杠<br>构造函数需要两次转义</li>
+<li>特殊字符<br><code>\cX</code> 表示 Ctrl-[X]，其中的 X 是 A-Z 之中任一个英文字母，用来匹配控制字符。<br><code>[\b]</code> 匹配退格键(U+0008)，不要与 <code>\b</code> 混淆。<br><code>\n</code> 匹配换行键。<br><code>\r</code> 匹配回车键。<br><code>\t</code> 匹配制表符 tab（U+0009）。<br><code>\v</code> 匹配垂直制表符（U+000B）。<br><code>\f</code> 匹配换页符（U+000C）。<br><code>\0</code> 匹配 <code>null</code> 字符（U+0000）。<br><code>\xhh</code> 匹配一个以两位十六进制数（\x00-\xFF）表示的字符。<br><code>\uhhhh</code> 匹配一个以四位十六进制数（\u0000-\uFFFF）表示的 Unicode 字符。</li>
 </ol>
-<h2 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h2><p>字符类（class）表示有一系列字符可供选择，只要匹配其中一个就可以了。所有可供选择的字符都放在方括号内，比如[^xyz] 表示x、y、z之中任选一个匹配。</p>
+<h2 id="字符类"><a href="#字符类" class="headerlink" title="字符类"></a>字符类</h2><p>字符类（class）表示有一系列字符可供选择，只要匹配其中一个就可以了。所有可供选择的字符都放在方括号内，比如 <code>[^xyz]</code> 表示 x、y、z 之中任选一个匹配。</p>
 <ol>
-<li>脱字符（^）：需在字符类第一位<br>表示除了字符类之中的字符，其他字符都可以匹配。只有[^]，就表示匹配一切字符，包括换行符。相比之下，点号作为元字符（.）是不包括换行符的。</li>
-<li>连字符（-）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[0-9.,]</span><br><span class="line">[0-9a-fA-F]</span><br><span class="line">[a-zA-Z0-9-]</span><br><span class="line">[1-31] // 不代表1到31，只代表1到3</span><br></pre></td></tr></table></figure>
+<li>脱字符（<code>^</code>）：需在字符类第一位<br>表示除了字符类之中的字符，其他字符都可以匹配。只有<code>[^]</code>，就表示匹配一切字符，包括换行符。相比之下，点号作为元字符（<code>.</code>）是不包括换行符的。</li>
+<li>连字符（<code>-</code>）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[0-9.,]</span><br><span class="line">[0-9a-fA-F]</span><br><span class="line">[a-zA-Z0-9-]</span><br><span class="line">[1-31]  // 不代表1到31，只代表1到3</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
-<h2 id="预定义模式：某些常见模式的简写方式"><a href="#预定义模式：某些常见模式的简写方式" class="headerlink" title="预定义模式：某些常见模式的简写方式"></a>预定义模式：某些常见模式的简写方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">\d 匹配0-9之间的任一数字，相当于[0-9]。</span><br><span class="line">\D 匹配所有0-9以外的字符，相当于[^0-9]。</span><br><span class="line">\w 匹配任意的字母、数字和下划线，相当于[A-Za-z0-9_]。</span><br><span class="line">\W 除所有字母、数字和下划线以外的字符，相当于[^A-Za-z0-9_]。</span><br><span class="line">\s 匹配空格（包括换行符、制表符、空格符等），相等于[ \t\r\n\v\f]。</span><br><span class="line">\S 匹配非空格的字符，相当于[^ \t\r\n\v\f]。</span><br><span class="line">\b 匹配词的边界。</span><br><span class="line">\B 匹配非词边界，即在词的内部</span><br></pre></td></tr></table></figure>
+<h2 id="预定义模式：某些常见模式的简写方式"><a href="#预定义模式：某些常见模式的简写方式" class="headerlink" title="预定义模式：某些常见模式的简写方式"></a>预定义模式：某些常见模式的简写方式</h2><p><code>\d</code> 匹配0-9之间的任一数字，相当于 <code>[0-9]</code>。
+<code>\D</code> 匹配所有0-9以外的字符，相当于 <code>[^0-9]</code> 。<br><code>\w</code> 匹配任意的字母、数字和下划线，相当于 <code>[A-Za-z0-9_]</code> 。<br><code>\W</code> 除所有字母、数字和下划线以外的字符，相当于 <code>[^A-Za-z0-9_]</code> 。<br><code>\s</code> 匹配空格（包括换行符、制表符、空格符等），相等于 <code>[ \t\r\n\v\f]</code> 。<br><code>\S</code> 匹配非空格的字符，相当于 <code>[^ \t\r\n\v\f]</code> 。<br><code>\b</code> 匹配词的边界。<br><code>\B</code> 匹配非词边界，即在词的内部。</p>
+<h2 id="重复类"><a href="#重复类" class="headerlink" title="重复类"></a>重复类</h2><p>模式的精确匹配次数，使用大括号（<code>{}</code>）表示。<br><code>{n}</code> 表示恰好重复 n 次；<br><code>{n,}</code> 表示至少重复 n 次；<br><code>{n,m}</code> 表示重复不少于 n 次，不多于 m 次。</p>
+<h2 id="量词符：设定某个模式出现的次数"><a href="#量词符：设定某个模式出现的次数" class="headerlink" title="量词符：设定某个模式出现的次数"></a>量词符：设定某个模式出现的次数</h2><p><code>?</code> 问号表示某个模式出现0次或1次，等同于 <code>{0, 1}</code> 。<br><code>*</code> 星号表示某个模式出现0次或多次，等同于 <code>{0,}</code> 。<br><code>+</code> 加号表示某个模式出现1次或多次，等同于 <code>{1,}</code> 。</p>
+<h2 id="贪婪模式"><a href="#贪婪模式" class="headerlink" title="贪婪模式"></a>贪婪模式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">'aaa'</span>;</span><br><span class="line">s.match(<span class="regexp">/a+/</span>);  <span class="comment">// ["aaa"]</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="重复类"><a href="#重复类" class="headerlink" title="重复类"></a>重复类</h2><p>模式的精确匹配次数，使用大括号（{}）表示。{n}表示恰好重复n次，{n,}表示至少重复n次，{n,m}表示重复不少于n次，不多于m次。</p>
-<h2 id="量词符：设定某个模式出现的次数"><a href="#量词符：设定某个模式出现的次数" class="headerlink" title="量词符：设定某个模式出现的次数"></a>量词符：设定某个模式出现的次数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">? 问号表示某个模式出现0次或1次，等同于&#123;0, 1&#125;。</span><br><span class="line">* 星号表示某个模式出现0次或多次，等同于&#123;0,&#125;。</span><br><span class="line">+ 加号表示某个模式出现1次或多次，等同于&#123;1,&#125;。</span><br></pre></td></tr></table></figure>
+<p>贪婪模式改为非贪婪模式<br><code>*?</code>：表示某个模式出现 0 次或多次，匹配时采用非贪婪模式。<br><code>+?</code>：表示某个模式出现 1 次或多次，匹配时采用非贪婪模式。</p>
+<h2 id="字符串去空格-replace"><a href="#字符串去空格-replace" class="headerlink" title="字符串去空格(replace)"></a>字符串去空格(replace)</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'  #id div.class  '</span>;</span><br><span class="line">str.trim();  <span class="comment">// "#id div.class"</span></span><br><span class="line">str.replace(<span class="regexp">/^\s+|\s+$/g</span>, <span class="string">''</span>);  <span class="comment">// "#id div.class"</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="贪婪模式"><a href="#贪婪模式" class="headerlink" title="贪婪模式"></a>贪婪模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s = &apos;aaa&apos;;</span><br><span class="line">s.match(/a+/) // [&quot;aaa&quot;]</span><br></pre></td></tr></table></figure>
+<p><code>$&amp;</code>：匹配的子字符串。<br>$`：匹配结果前面的文本。<br><code>$’</code>：匹配结果后面的文本。<br><code>$n</code>：匹配成功的第 n 组内容， n 是从 1 开始的自然数。<br><code>$$</code>：指代美元符号 $ 。</p>
 
-<p>贪婪模式改为非贪婪模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*?：表示某个模式出现0次或多次，匹配时采用非贪婪模式。</span><br><span class="line">+?：表示某个模式出现1次或多次，匹配时采用非贪婪模式。</span><br></pre></td></tr></table></figure>
-
-<h2 id="字符串去空格-replace"><a href="#字符串去空格-replace" class="headerlink" title="字符串去空格(replace)"></a>字符串去空格(replace)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var str = &apos;  #id div.class  &apos;;</span><br><span class="line">str.trim() // &quot;#id div.class&quot;</span><br><span class="line">str.replace(/^\s+|\s+$/g, &apos;&apos;) // &quot;#id div.class&quot;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$&amp;：匹配的子字符串。</span><br><span class="line">$`：匹配结果前面的文本。</span><br><span class="line">$’：匹配结果后面的文本。</span><br><span class="line">$n：匹配成功的第n组内容，n是从1开始的自然数。</span><br><span class="line">$$：指代美元符号$。</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -727,7 +719,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建正则表达式的方法"><span class="nav-number">1.</span> <span class="nav-text">创建正则表达式的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式的实例属性"><span class="nav-number">2.</span> <span class="nav-text">正则表达式的实例属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例方法"><span class="nav-number">3.</span> <span class="nav-text">实例方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-RegExp-prototype-test"><span class="nav-number">3.1.</span> <span class="nav-text">1. RegExp.prototype.test()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RegExp-prototype-exec"><span class="nav-number">3.2.</span> <span class="nav-text">2. RegExp.prototype.exec()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字面量字符和元字符"><span class="nav-number">4.</span> <span class="nav-text">字面量字符和元字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元字符"><span class="nav-number">4.1.</span> <span class="nav-text">元字符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符类"><span class="nav-number">5.</span> <span class="nav-text">字符类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预定义模式：某些常见模式的简写方式"><span class="nav-number">6.</span> <span class="nav-text">预定义模式：某些常见模式的简写方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重复类"><span class="nav-number">7.</span> <span class="nav-text">重复类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#量词符：设定某个模式出现的次数"><span class="nav-number">8.</span> <span class="nav-text">量词符：设定某个模式出现的次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪婪模式"><span class="nav-number">9.</span> <span class="nav-text">贪婪模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串去空格-replace"><span class="nav-number">10.</span> <span class="nav-text">字符串去空格(replace)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建正则表达式"><span class="nav-number">1.</span> <span class="nav-text">创建正则表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实例属性"><span class="nav-number">1.1.</span> <span class="nav-text">实例属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例方法"><span class="nav-number">1.2.</span> <span class="nav-text">实例方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元字符"><span class="nav-number">2.</span> <span class="nav-text">元字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符类"><span class="nav-number">3.</span> <span class="nav-text">字符类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预定义模式：某些常见模式的简写方式"><span class="nav-number">4.</span> <span class="nav-text">预定义模式：某些常见模式的简写方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重复类"><span class="nav-number">5.</span> <span class="nav-text">重复类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#量词符：设定某个模式出现的次数"><span class="nav-number">6.</span> <span class="nav-text">量词符：设定某个模式出现的次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪婪模式"><span class="nav-number">7.</span> <span class="nav-text">贪婪模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串去空格-replace"><span class="nav-number">8.</span> <span class="nav-text">字符串去空格(replace)</span></a></li></ol></div>
             
 
           </div>
