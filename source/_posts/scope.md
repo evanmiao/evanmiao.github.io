@@ -1,0 +1,239 @@
+---
+title: JavaScript 作用域与作用域链
+tags:
+- JavaScript
+- 学习笔记
+toc: ture
+---
+
+{% cq %}
+
+当查找变量的时候，会先从当前执行上下文的变量对象中查找，如果没有找到，就会从父级（词法层面上的父级）执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的变量对象构成的链表就叫做作用域链。
+
+{% endcq %}
+
+<!-- more -->
+
+## 作用域
+
+作用域就是变量与函数的可访问范围。作用域的最大用途就是隔离变量或函数，并控制变量或函数的生命周期。
+
+### 全局作用域
+
+在整个程序生命周期内都是有效的，在任意的函数内部都能访问的变量或函数拥有全局作用域。
+
+以下几种情况拥有全局作用域：
+
+1. 定义在最外层的函数和变量：
+
+```js
+var a = 0;
+
+function test() {
+    var b = 1;
+
+    function test2() {
+        console.log(b);
+    }
+
+    test2();
+}
+
+console.log(a);  // 0
+console.log(b);  // ReferenceError: b is not defined
+test();  // 1
+test2();  // ReferenceError: test2 is not defined
+```
+
+2. 未经声明就赋值的变量：
+
+```js
+function test() {
+    var a = 0;
+    b = 1;
+}
+
+console.log(a);  // ReferenceError: a is not defined
+console.log(b);  // 1
+```
+
+3. `window` 的属性：
+
+一般情况下， `window` 对象的内置属性都拥有全局作用域，例如 `window.name` 、 `window.location` 、 `window.top` 等等。
+
+这里需要注意的是 `var` 声明的全局变量以及未经声明就赋值的变量会挂载到 `window` 属性上，但是 `var` 声明的变量不能删除，未经声明的变量可以删除。
+
+### 函数作用域
+
+在某个函数内部声明的变量或函数拥有函数作用域。它们只能被该函数的语句使用，函数外部是不可访问的。函数在创建的时候，变量和函数的函数作用域已经确定下来。函数的参数也属于函数内部的变量，因此拥有函数作用域。
+
+```js
+function test() {
+    var a = 1;
+
+    function test2() {
+        console.log(a);
+    }
+
+    test2();
+}
+
+console.log(a);  // ReferenceError: a is not defined
+test2();  // ReferenceError: test2 is not defined
+```
+
+函数定义语句中函数会被提升到作用域顶部，而函数表达式则不会。
+
+```js
+a();  // I am a
+b();  // TypeError: b is not a function
+console.log(typeof b);  // undefined
+
+function a() {
+    console.log('I am a');
+}
+
+var b = function () {
+    console.log('I am b');
+}
+
+b();  // I am b
+```
+
+函数不能相互调用各自的作用域，虽然它们可以互相调用。
+
+```js
+function test() {
+    var a = 0;
+}
+
+function test2() {
+    test();
+    console.log(a);
+}
+
+test2();  // ReferenceError: a is not defined
+```
+
+当一个函数在另一个函数内定义，内部的函数能够访问外部函数的变量。我们称之为词法作用域。
+
+然而，外部的函数不能够访问内部函数的变量。
+
+```js
+function test() {
+    var a = 0;
+
+    function test2() {
+        var b = 1;
+        console.log(a);
+    }
+
+    test2();  // 0
+    console.log(b);
+}
+
+test();  // ReferenceError: b is not defined
+```
+
+### 块级作用域
+
+在ES6之前是没有块级作用域的，ES6引入了 `let` 、 `const` 关键字就可以创建块级作用域。
+
+```js
+for(var i = 0; i < 5; i++) {
+    // ...
+}
+
+console.log(i);  // 5
+```
+
+用 `var` 关键字声明的变量，在 `for` 循环结束之后仍然被保留在当前作用域里，可以使用 `let` 关键字代替 `var` 关键字：
+
+```js
+for(let i = 0; i < 5; i++) {
+    // ...
+}
+
+console.log(i);  // ReferenceError: i is not defined
+```
+
+同样能形成块级作用域的还有 `const` 关键字：
+
+```js
+if (true) {
+    const a = 0;
+}
+
+console.log(a);  // ReferenceError: a is not defined
+```
+
+## 执行上下文
+
+函数调用都有与之相关的作用域和上下文。从根本上说，作用域（scope）是基于函数（function-based）而上下文（context）是基于对象（object-based）。
+- 作用域：变量的可见性
+- 上下文： 在相同作用域下的 `this` 值
+
+一个执行上下文定义了一个函数执行时的环境，函数每次执行时对应的执行上下文都是独一无二的，多次调用一个函数会导致创建多个执行上下文。一个函数可以产生无数个执行上下文，一系列的执行上下文从逻辑上形成了执行上下文栈，栈底总是全局上下文，栈顶是当前（活动的）执行上下文。当函数执行完毕，它所产生的执行上下文被销毁。
+
+JavaScript 属于解释型语言，JavaScript 的执行分为解释和执行两个阶段，这两个阶段所做的事并不一样：
+
+**解释阶段：**
+- 词法分析
+- 语法分析
+- 作用域规则确定
+
+**执行阶段：**
+- 创建执行上下文
+- 执行函数代码
+- 垃圾回收
+
+JavaScript 解释阶段便会确定作用域规则，因此作用域在函数定义时就已经确定了，而不是在函数调用时确定，但是执行上下文是函数执行之前创建的。执行上下文最明显的就是 this 的指向是执行时确定的。而作用域访问的变量是编写代码的结构确定的。
+
+作用域和执行上下文之间最大的区别是： 执行上下文在运行时确定，随时可能改变；作用域在定义时就确定，并且不会改变。
+
+同一个作用域下，不同的调用会产生不同的执行上下文环境，继而产生不同的变量的值。
+
+执行上下文三属性：
+- 变量对象(Variable object，VO)
+- 作用域链(Scope chain)
+- this
+
+### 变量对象 VO
+
+变量对象（variable object）是与执行上下文相关的数据作用域（scope of data）。它是与上下文关联的特殊对象，用于存储被定义在上下文中的变量（variables）和函数声明（function declarations）。它是一个抽象的概念，不同的上下文中，它表示使用不同的 object 。例如，在 global 全局上下文中，变量对象也是全局对象自身[global object]。（这就是我们可以通过全局对象的属性来指向全局变量）。
+
+进入执行上下文时， VO 的初始化过程具体如下：
+
+- 函数的形参（当进入函数执行上下文时）
+
+变量对象的一个属性，其属性名就是形参的名字，其值就是实参的值；对于没有传递的参数，其值为 undefined 。
+
+- 函数声明（FunctionDeclaration, FD）
+
+变量对象的一个属性，其属性名和值都是函数对象创建出来的；如果变量对象已经包含了相同名字的属性，则替换它的值。
+
+- 变量声明（var，VariableDeclaration）
+
+变量对象的一个属性，其属性名即为变量名，其值为undefined;如果变量名和已经声明的函数名或者函数的参数名相同，则不会影响已经存在的属性。
+
+执行代码的时候，VO的一些Undefined值会被确定。
+
+### 活动对象 AO
+
+当函数被调用者激活，这个特殊的活动对象（activation object）就被创建了。它包含普通参数（formal parameters）与特殊参数（arguments）对象（具有索引属性的参数映射表）。活动对象在函数上下文中作为变量对象使用。
+
+即：函数的变量对象保持不变，但除去存储变量与函数声明之外，还包含以及特殊对象 arguments 。
+
+AO 是在进入函数的执行上下文时创建的，并为该对象初始化一个 arguments 属性，该属性的值为 Arguments 对象。
+
+### 作用域链
+
+当查找变量的时候，会先从当前执行上下文的变量对象中查找，如果没有找到，就会从父级（词法层面上的父级）执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的变量对象构成的链表就叫做作用域链（scope chain）。
+
+过程如下：
+
+任何在执行上下文时刻的作用域都由作用域链来实现。
+
+在一个函数被定义的时候，会将它定义时刻的 `scope chain` 链接到这个函数对象的 `[[scope]]` 属性。
+
+在一个函数对象被调用的时候，会创建一个活动对象（也就是一个对象），然后对于每一个函数的形参，都命名为该活动对象的命名属性，然后将这个活动对象做为此时的作用域链(scope chain)最前端，并将这个函数对象的 `[[scope]]` 加入到 `scope chain` 中。
