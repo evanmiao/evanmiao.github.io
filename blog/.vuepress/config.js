@@ -58,7 +58,10 @@ module.exports = {
       }, {
         text: 'Copyright © 2019 Evan Miao',
         link: '/',
-      }, ],
+      }],
+    },
+    sitemap: {
+      hostname: 'https://evanmiao.github.io'
     },
     comment: {
       service: 'vssue',
