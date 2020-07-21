@@ -4,7 +4,7 @@ date: 2019-08-12
 tags:
   - JavaScript
   - 学习笔记
-summary: 记录几种数组去重的方法：循环嵌套、indexOf、indexOf 索引判断、sort 排序去邻、Object 键值对、ES6 Set
+summary: 记录几种数组去重的方法，一般都是在面试的时候才会遇到。
 ---
 
 ## 循环嵌套
@@ -45,6 +45,22 @@ function unique(arr) {
 }
 ```
 
+## includes
+
+与上一个思路相同，使用 `includes` 方法取代 `indexOf` 方法。
+
+```js
+function unique(arr) {
+  var res = [];
+  for (i = 0; i < arr.length; i++) {
+    if (!res.includes(arr[i])) {
+      res.push(arr[i]);
+    }
+  }
+  return res;
+}
+```
+
 ## indexOf 索引判断
 
 调用 `indexOf` 方法检测元素在数组中第一次出现的位置是否和元素现在的位置相等，如果不等则说明该元素是重复元素。
@@ -61,9 +77,39 @@ function unique(arr) {
 }
 ```
 
+## filter
+
+与上一个思路相同，调用 `filter` 方法过滤原数组。
+
+```js
+function unique(arr) {
+  return arr.filter(function (item, index, arr) {
+    return arr.indexOf(item) === index;
+  });
+}
+```
+
+## splice
+
+内层循环从外层循环当前元素的下一个元素开始，值相同时调用 `splice` 方法删去第二个（直接操作原始数组）。
+
+```js
+function unique(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        arr.splice(j, 1);
+        j--;
+      }
+    }
+  }
+  return arr;
+}
+```
+
 ## sort 排序去邻
 
-调用 `sort` 方法对原始数组进行排序，然后根据排序后的结果进行遍历及相邻元素比对，如果相等则跳过改元素，直到遍历结束。
+调用 `sort` 方法对原始数组进行排序，然后根据排序后的结果进行遍历及相邻元素比对，如果相等则跳过该元素，直到遍历结束。
 
 ```js
 function unique(arr) {
@@ -71,7 +117,7 @@ function unique(arr) {
   var res = [],
     temp;
   for (i = 0; i < arr.length; i++) {
-    // 第一个元素或与上一个相邻元素不相等
+    // 第一个元素 || 与上一个相邻元素不相等
     if (!i || arr[i] !== temp) {
       res.push(arr[i]);
     }
@@ -81,9 +127,30 @@ function unique(arr) {
 }
 ```
 
+## 递归
+
+数组排序后递归调用处理函数比较相邻的两个值，相同时删掉。
+
+```js
+function unique(arr) {
+  arr = arr.sort();
+
+  function loop(i) {
+    if (i > 0) {
+      if (arr[i] === arr[i - 1]) {
+        arr.splice(i, 1);
+      }
+      loop(i - 1);
+    }
+  }
+  loop(arr.length - 1);
+  return arr;
+}
+```
+
 ## Object 键值对
 
-创建一个空的 `Object` 对象，遍历原始数组，把数组的元素存成 `Object` 的 `key` ，并给对应的 `value` 赋值 `true` ，在判断另一个元素时，如果对应的 `value` 值为 `true`，则该元素重复。
+创建一个空的 `Object` 对象，遍历原始数组，把数组的元素存成 `Object` 的 `key` ，并给对应的 `value` 赋值，在判断另一个元素时，如果对应的 `value` 有值，则该元素重复。
 
 ```js
 function unique(arr) {
@@ -99,10 +166,38 @@ function unique(arr) {
 }
 ```
 
-## ES6 Set
+## Map
+
+与上一个思路相同， `Map` 数据结构也不会出现相同的 `key` 。
 
 ```js
-function unique (arr) {
+function unique(arr) {
+  var res = [],
+    map = new Map();
+  for (i = 0; i < arr.length; i++) {
+    if (!map.has(arr[i])) {
+      res.push(arr[i]);
+      map.set(arr[i], true);
+    }
+  }
+  return res;
+}
+```
+
+## Set
+
+最常用，最简洁。
+
+```js
+function unique(arr) {
   return Array.from(new Set(arr));
+}
+```
+
+使用扩展运算符（spread）进一步简化：
+
+```js
+function unique(arr) {
+  return [...new Set(arr)];
 }
 ```

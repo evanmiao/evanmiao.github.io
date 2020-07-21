@@ -54,8 +54,8 @@ summary: 使用 vmin 可以将屏幕宽度固定为竖屏时的宽度（锁定�
 
 ```scss
 // function
-@function rpx2vmin($rpx){
-  @return #{$rpx / 7.5}vmin; 
+@function rpx2vmin($rpx) {
+  @return #{$rpx / 7.5}vmin;
 }
 
 .box {

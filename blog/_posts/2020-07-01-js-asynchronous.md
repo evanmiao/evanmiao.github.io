@@ -113,12 +113,12 @@ function fn() {
       var data = 'hello';
       resolve(data);
     }, 1000);
-  })
+  });
 }
 
 fn().then(function (data) {
   console.log(data);
-})
+});
 ```
 
 `then` 方法返回一个**新的** Promise 实例（字面量会通过 `Promise.resolve()` 封装）。因此可以采用链式写法，即 `.then()` 后面再调用另一个 `.then()` 。第一个 `.then()` 的回调函数完成以后，会将返回结果作为参数，传入第二个 `.then()` 的回调函数。
@@ -277,8 +277,8 @@ async function fn() {
 }
 
 fn().catch(function (error) {
-  console.log(error)
-})
+  console.log(error);
+});
 ```
 
 也可以使用同步的 `try...catch` 结构捕获错误：
@@ -290,7 +290,7 @@ async function fn() {
       throw new Error('The error.');
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 ```
@@ -333,7 +333,7 @@ function delay(ms) {
     setTimeout(function () {
       resolve('After ' + ms + ' millisecond.');
     }, ms);
-  })
+  });
 }
 
 async function fn() {

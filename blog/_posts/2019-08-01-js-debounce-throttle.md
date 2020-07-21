@@ -4,14 +4,14 @@ date: 2019-08-01
 tags:
   - JavaScript
   - 学习笔记
-summary: 函数防抖 (debounce) 与函数节流 (throttle) ，两者都是优化高频率执行 JS 代码的一种手段。
+summary: 函数防抖（debounce）与函数节流（throttle），两者都是优化高频率执行的 JavaScript 代码的一种手段。
 ---
 
 ## 概念解释
 
 一些短时间内频繁触发的事件，如果在事件触发时执行代码块，会将代码块重复执行很多次。很可能造成浏览器卡顿，甚至崩溃。可通过函数防抖和函数节流来避免这种情况。
 
-## 函数防抖(debounce)
+## 函数防抖（debounce）
 
 事件被触发指定时间后执行回调函数，如果事件在这指定时间内又被触发，则重新计时。
 
@@ -32,11 +32,11 @@ function debounce(fn, delay) {
     timer = setTimeout(function () {
       fn.apply(this, args);
     }, delay);
-  }
+  };
 }
 ```
 
-## 函数节流(throttle)
+## 函数节流（throttle）
 
 事件在指定时间内被触发多次只会执行一次回调函数。
 
@@ -81,18 +81,18 @@ function throttle(fn, delay) {
       // 同步时间
       lastTime = nowTime;
     }
-  }
+  };
 }
 ```
 
 ## 应用场景
 
 - debounce
-  - search搜索联想；手机号、邮箱验证输入检测。用户在不断输入值时，用防抖来节约请求资源。
-  - window触发resize的时候。只需窗口调整完成后，计算窗口大小。防止重复渲染。
+  - search 搜索联想；手机号、邮箱验证输入检测。用户在不断输入值时，用防抖来节约请求资源。
+  - window 触发 resize 的时候。只需窗口调整完成后，计算窗口大小。防止重复渲染。
 
 - throttle
   - canvas 模拟画板，mousemove
   - DOM 元素推拽（不使用 H5 Drag&Drop API），mousemove
-  - 射击游戏，mousedown / keydown (单位时间内只能发射一颗子弹)
+  - 射击游戏，mousedown / keydown （单位时间内只能发射一颗子弹）
   - 监听滚动事件是否滑到底部自动加载更多

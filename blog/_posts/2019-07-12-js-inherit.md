@@ -4,7 +4,7 @@ date: 2019-07-12
 tags:
   - JavaScript
   - 学习笔记
-summary: 继承是类与类之间的关系，其作用是使得子类具有父类的各种属性和方法。 JavaScript 没有“类”的概念（ES6 中的类只是语法糖），它基于原型链实现继承（通常被称为 原型式继承 —— prototypal inheritance ）
+summary: 继承是类与类之间的关系，其作用是使得子类具有父类的各种属性和方法。 JavaScript 没有「类」的概念（ES6 中的类只是语法糖），它基于原型链实现继承（通常被称为：原型式继承 —— prototypal inheritance）。
 ---
 
 ## 原型链继承
@@ -32,12 +32,12 @@ SubType.prototype.getSubValue = function () {
 };
 
 var instance = new SubType();
-console.log(instance.getSuperValue());  //true 
+console.log(instance.getSuperValue());  // true
 ```
 
 **缺点：**
 
-1. 引用类型值的原型属性会被所有实例共享。
+- 引用类型值的原型属性会被所有实例共享。
 
   ```js
   function SuperType() {
@@ -52,19 +52,20 @@ console.log(instance.getSuperValue());  //true
 
   var instance1 = new SubType();
   instance1.colors.push("black");
-  console.log(instance1.colors);  // "red,blue,green,black"
+  console.log(instance1.colors);  // ["red", "blue", "green", "black"]
 
   var instance2 = new SubType();
-  console.log(instance2.colors);  // "red,blue,green,black"
+  console.log(instance2.colors);  // ["red", "blue", "green", "black"]
   ```
 
   *两个实例对象 `instance1` 和 `instance2` 的 `colors` 属性指向相同，改变一个会影响另一个实例的属性。*
 
-2. 在创建子类实例时，不能向父类构造函数传参。
+- 在创建子类实例时，不能向父类构造函数传参。
 
 ## 借用构造函数
 
-借用构造函数（ constructor stealing ）有时也叫做伪造对象或经典继承，既在子类构造函数的内部调用父类构造函数。
+借用构造函数（constructor stealing）有时也叫做伪造对象或经典继承，既在子类构造函数的内部调用父类构造函数。
+
 相当于把父类构造函数的内容复制给了子类构造函数。这是所有继承中唯一不涉及到 `prototype` 的继承。
 
 ```js
@@ -79,16 +80,14 @@ function SubType() {
 
 var instance1 = new SubType();
 instance1.colors.push("black");
-console.log(instance1.colors);  // "red,blue,green,black"
+console.log(instance1.colors);  // ["red", "blue", "green", "black"]
 
 var instance2 = new SubType();
-console.log(instance2.colors);  // "red,blue,green"
+console.log(instance2.colors);  // ["red", "blue", "green"]
 ```
 
 - 优点：
-
   1. 避免了引用类型的属性被所有实例共享。
-
   2. 可在子类构造函数中向父类构造函数传参。
 
   ```js
@@ -112,7 +111,7 @@ console.log(instance2.colors);  // "red,blue,green"
 
 ## 组合继承
 
-组合继承（ combination inheritence ），有时候也叫做伪经典继承，指的是将原型链和借用构造函数的技术组合到一块，从而发回二者之长的一种继承模式。其背后的思路是使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承。这样，即通过在原型上定义方法实现了函数复用，又能够保证每个实例都有它自己的属性。
+组合继承（combination inheritence），有时候也叫做伪经典继承，指的是将原型链和借用构造函数的技术组合到一块，从而发回二者之长的一种继承模式。其背后的思路是使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承。这样，即通过在原型上定义方法实现了函数复用，又能够保证每个实例都有它自己的属性。
 
 ```js
 function SuperType(name) {
@@ -140,23 +139,23 @@ SubType.prototype.sayAge = function () {
 
 var instance1 = new SubType("Nicholas", 29);
 instance1.colors.push("black");
-console.log(instance1.colors);  // "red,blue,green,black"
+console.log(instance1.colors);  // ["red", "blue", "green", "black"]
 instance1.sayName();  // "Nicholas"
 instance1.sayAge();  // 29
 
 var instance2 = new SubType("Greg", 27);
-console.log(instance2.colors);  // "red,blue,green"
+console.log(instance2.colors);  // ["red", "blue", "green"]
 instance2.sayName();  // "Greg"
 instance2.sayAge();  // 27
 ```
 
-融合原型链继承和构造函数的优点，是 JavaScript 中最常用的继承模式。
-
-**缺点在寄生组合式继承部分详细叙述**
+- 融合原型链继承和构造函数的优点，是 JavaScript 中最常用的继承模式。
+- 缺点在寄生组合式继承部分详细叙述。
 
 ## 原型式继承
 
-原型式继承（ prototypal inheritance ）没有严格意义上的构造函数。
+原型式继承（prototypal inheritance）没有严格意义上的构造函数。
+
 思路是借助原型可以基于已有的对象创建新对象，同时还不必因此创建自定义类型。
 
 ```js
@@ -183,16 +182,15 @@ var yetAnotherPerson = object(person);
 yetAnotherPerson.name = 'linda';
 yetAnotherPerson.friends.push('Barbie')
 
-console.log(person.friends);  // "Shelly,Court,Van,Rob,Barbie"
+console.log(person.friends);  // ["Shelly", "Court", "Van", "Rob", "Barbie"]
 ```
 
-**缺点同原型链继承**
-
-ECMAScript 5 通过新增 `Object.create()` 方法规范化了原型式继承。
+- ECMAScript 5 通过新增 `Object.create()` 方法规范化了原型式继承。
+- 缺点同原型链继承。
 
 ## 寄生式继承
 
-寄生式（ parasitic ）继承是与原型式继承紧密相关的一种思路。寄生式继承的思路与寄生构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数，该函数在内部已某种方式来增强对象，最后再像真的是它做了所有工作一样返回对象。
+寄生式（parasitic）继承是与原型式继承紧密相关的一种思路。寄生式继承的思路与寄生构造函数和工厂模式类似，即创建一个仅用于封装继承过程的函数，该函数在内部已某种方式来增强对象，最后再像真的是它做了所有工作一样返回对象。
 
 ```js
 function createAnother(original) {
@@ -209,12 +207,12 @@ var person = {
 };
 
 var anotherPerson = createAnother(person);
-anotherPerson.sayHi(); //"hi"
+anotherPerson.sayHi();              // "hi"
 ```
 
 在主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式。前面示范继承模式时使用的 `object()` 函数不是必需的；任何能够返回新对象的函数都使用与此模式。
 
-**缺点同构造函数模式，无法实现复用。**
+- 缺点同构造函数模式，无法实现复用。
 
 ## 寄生组合式继承
 
@@ -276,7 +274,7 @@ function SubType(name, age) {
 }
 
 // 将父类原型指向子类
-inheritPrototype(SubType, SuperType)
+inheritPrototype(SubType, SuperType);
 
 // 新增子类原型属性
 SubType.prototype.sayAge = function () {
