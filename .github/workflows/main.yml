@@ -18,8 +18,8 @@ jobs:
           yarn build
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@master
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: master
-          FOLDER: blog/.vuepress/dist
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_dir: blog/.vuepress/dist
+          publish_branch: master
