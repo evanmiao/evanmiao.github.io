@@ -2,7 +2,7 @@
 title: 微信小程序横屏适配问题
 date: 2020-05-16
 tags:
-  - miniprogram
+  - 小程序
   - 踩坑
 summary: 使用 vmin 可以将屏幕宽度固定为竖屏时的宽度（锁定屏幕的短边），这样无论横屏竖屏，屏幕宽度总是等于 100vmin ，代入 rpx 的计算规则，将 rpx 换算成 vmin 即可完美适配。
 ---
@@ -44,7 +44,7 @@ summary: 使用 vmin 可以将屏幕宽度固定为竖屏时的宽度（锁定�
 ```css
 /* 设置宽度为 5rpx */
 .box {
-  width: calc(5vmin / 7.5)
+  width: calc(5vmin / 7.5);
 }
 ```
 
@@ -76,7 +76,7 @@ summary: 使用 vmin 可以将屏幕宽度固定为竖屏时的宽度（锁定�
     $vminValues: #{$vminValues + ($value / 7.5)}vmin;
 
     @if $i < $max {
-      $vminValues: #{$vminValues + " "};
+      $vminValues: #{$vminValues + ' '};
     }
   }
 

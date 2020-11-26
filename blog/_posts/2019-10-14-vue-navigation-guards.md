@@ -2,7 +2,7 @@
 title: Vue 导航守卫
 date: 2019-10-14
 tags:
-  - vue
+  - Vue
   - 学习笔记
 summary: 导航守卫（Navigation Guards）就是路由跳转过程中的一些钩子函数，类似生命周期函数。“导航”表示路由正在发生改变。
 ---

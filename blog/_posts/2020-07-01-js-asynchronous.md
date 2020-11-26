@@ -40,9 +40,9 @@ delay(function () {
   delay(function () {
     console.log('After two seconds.');
     delay(function () {
-      console.log('After three seconds');
+      console.log('After three seconds.');
       delay(function () {
-        console.log('After four seconds');
+        console.log('After four seconds.');
       });
     });
   });
@@ -153,10 +153,10 @@ delay().then(function () {
   console.log('After two seconds.');
   return delay();
 }).then(function () {
-  console.log('After three seconds');
+  console.log('After three seconds.');
   return delay();
 }).then(function () {
-  console.log('After four seconds');
+  console.log('After four seconds.');
 });
 ```
 
@@ -217,9 +217,9 @@ function* asyncPrint() {
   yield delay();
   console.log('After two seconds.');
   yield delay();
-  console.log('After three seconds');
+  console.log('After three seconds.');
   yield delay();
-  console.log('After four seconds');
+  console.log('After four seconds.');
 }
 
 var g = asyncPrint();
@@ -257,9 +257,9 @@ async function asyncPrint() {
   await delay();
   console.log('After two seconds.');
   await delay();
-  console.log('After three seconds');
+  console.log('After three seconds.');
   await delay();
-  console.log('After four seconds');
+  console.log('After four seconds.');
 }
 
 asyncPrint();
@@ -308,15 +308,15 @@ async function fn() {
   var delay1 = delay();
   var delay2 = delay();
   await delay1;
-  console.log("delay1 end.");
+  console.log('delay1 end');
   await delay2;
-  console.log("delay2 end.");
+  console.log('delay2 end');
 }
 
 fn();
 ```
 
-上面代码中，调用了两次 `delay()` ，并将它们返回的 Promise 对象存储在变量中，这样可以同时启动它们关联的进程。然后分别用 `await` 等待异步任务执行完成。因为两个延时器延迟时间一样，且基本同时开始处理，所以将同时完成。当一秒过后，先输出 `delay1 end.` 紧接着立即输出 `delay2 end.` 。
+上面代码中，调用了两次 `delay()` ，并将它们返回的 Promise 对象存储在变量中，这样可以同时启动它们关联的进程。然后分别用 `await` 等待异步任务执行完成。因为两个延时器延迟时间一样，且基本同时开始处理，所以将同时完成。当一秒过后，先输出 `delay1 end` 紧接着立即输出 `delay2 end` 。
 
 async/await 建立在 Promise 之上，因此它与 Promise 提供的所有功能兼容。处理多个并发请求时可以用 Promise 的 `all` 方法，它用于将多个 Promise 实例，包装成一个新的 Promise 实例。 `.all()` 接受一个数组为参数，数组中可包含多个 Promise 实例（如果不是 Promise 实例会调用 `Promise.resolve()` 进行封装）。
 

@@ -19,7 +19,7 @@ summary: 立即执行函数形成了一个局部作用域，可以封装一些�
 很多人刚开始理解立即执行函数的时候，觉得应该是这样的：
 
 ```js
-function(){alert('我是匿名函数')}()
+function () { alert('我是匿名函数') }()
 ```
 
 然而这样写浏览器会报错，因为 JS 引擎认为这是一个函数声明，解决方法就是让引擎知道这是个表达式，可以解析。
@@ -27,37 +27,37 @@ function(){alert('我是匿名函数')}()
 比如给函数取反：
 
 ```js
-!function(){alert('我是匿名函数')}()  // 我们不关心这个匿名函数的返回值，只想通过语法检查
+!function () { alert('我是匿名函数') }()  // 我们不关心这个匿名函数的返回值，只想通过语法检查
 ```
 
 类似的还有：
 
 ```js
-+function(){alert('我是匿名函数')}()
--function(){alert('我是匿名函数')}()
-~function(){alert('我是匿名函数')}()
-void function(){alert('我是匿名函数')}()
-new function(){alert('我是匿名函数')}()
++function () { alert('我是匿名函数') }()
+-function () { alert('我是匿名函数') }()
+~function () { alert('我是匿名函数') }()
+void function () { alert('我是匿名函数') }()
+new function () { alert('我是匿名函数') }()
 ```
 
 如果不想改变函数的返回值，可以使用圆括号：
 
 ```js
-;(function(){alert('我是匿名函数')}())  // 用括号把整个表达式包起来
-;(function(){alert('我是匿名函数')})()  //用括号把函数包起来
+;(function () { alert('我是匿名函数') }())  // 用括号把整个表达式包起来
+;(function () { alert('我是匿名函数') })()  //用括号把函数包起来
 ```
 
 这种用法最好在开头加一个 `;` 以避免括号前面有东西的情况，比如
 
 ```js
 a
-(function(){})()
+(function () { })()
 //等价于
 a()()
 
 //同理
 a
-(function(){}())
+(function () { }())
 //等价于
 a()
 ```

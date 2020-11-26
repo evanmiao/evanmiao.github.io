@@ -2,7 +2,7 @@
 title: Vue 生命周期
 date: 2019-09-01
 tags:
-  - vue
+  - Vue
   - 学习笔记
 summary: Vue 的生命周期的思想贯穿在组件开发的始终，通过熟悉其生命周期调用不同的钩子函数，我们可以准确地控制数据流和其对 DOM 的影响； Vue 生命周期的思想是 Vnode 和 MVVM 的生动体现和继承。
 ---
@@ -98,7 +98,7 @@ Vue 的生命周期的思想贯穿在组件开发的始终，通过熟悉其生�
 </div>
 <script>
   let vm = new Vue({
-    template: "<h1>this is template</h1>",
+    template: '<h1>this is template</h1>',
     render: h => h('h1', 'this is createElement')
   }).$mount('#app')
 </script>
@@ -218,3 +218,34 @@ updated 、 watch 和 nextTick 区别
 
 1. 兄弟组件的初始化（ mounted 之前）分开进行，挂载是从上到下依次进行。
 2. 当没有数据关联时，兄弟组件之间的更新和销毁是互不关联的。
+
+## Vue 3
+
+### 替换
+
+- beforeCreate -> setup()
+- created -> setup()
+
+### 重命名
+
+- beforeMount -> onBeforeMount
+- mounted -> onMounted
+- beforeUpdate -> onBeforeUpdate
+- updated -> onUpdated
+- beforeDestroy -> onBeforeUnmount
+- destroyed -> onUnmounted
+- errorCaptured -> onErrorCaptured
+
+### 新增
+
+- onRenderTracked
+- onRenderTriggered
+
+Vue 3 中建议使用 `setup()` 代替 `beforeCreate` 、 `created` 钩子函数, 虽然 Vue3 兼容 Vue2 的大部分语法, 但是在 Vue3 中慎用以下钩子函数, 以下的生命周期钩子函数被改名后, 在 Vue3 中将不会再有 `beforeDestroy` 和 `destroyed`
+
+- beforeDestroy -> onBeforeUnmount
+- destroyed -> onUnmounted
+
+### 生命周期函数执行顺序
+
+`setup` => `onBeforeMount` => `onRenderTracked` => `onMounted` => `onRenderTriggered` => `onBeforeUpdate` => `onRenderTracked` => `OnUpdated` => `onBeforeUnmount` => `onUnmounted`

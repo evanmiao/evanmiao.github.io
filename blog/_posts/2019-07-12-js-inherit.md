@@ -41,7 +41,7 @@ console.log(instance.getSuperValue());  // true
 
   ```js
   function SuperType() {
-    this.colors = ["red", "blue", "green"];
+    this.colors = ['red', 'blue', 'green'];
   }
 
   function SubType() {
@@ -51,7 +51,7 @@ console.log(instance.getSuperValue());  // true
   SubType.prototype = new SuperType();
 
   var instance1 = new SubType();
-  instance1.colors.push("black");
+  instance1.colors.push('black');
   console.log(instance1.colors);  // ["red", "blue", "green", "black"]
 
   var instance2 = new SubType();
@@ -70,7 +70,7 @@ console.log(instance.getSuperValue());  // true
 
 ```js
 function SuperType() {
-  this.colors = ["red", "blue", "green"];
+  this.colors = ['red', 'blue', 'green'];
 }
 
 function SubType() {
@@ -79,7 +79,7 @@ function SubType() {
 }
 
 var instance1 = new SubType();
-instance1.colors.push("black");
+instance1.colors.push('black');
 console.log(instance1.colors);  // ["red", "blue", "green", "black"]
 
 var instance2 = new SubType();
@@ -97,13 +97,13 @@ console.log(instance2.colors);  // ["red", "blue", "green"]
 
   function SubType() {
     // 继承了 SuperType ，同时还传递了参数
-    SuperType.call(this, "Nicholas");
+    SuperType.call(this, 'Nicholas');
     // 实例属性
     this.age = 29;
   }
 
   var instance = new SubType();
-  console.log(instance.name);  // "Nicholas"
+  console.log(instance.name);  // Nicholas
   console.log(instance.age);  // 29
   ```
 
@@ -137,15 +137,15 @@ SubType.prototype.sayAge = function () {
   console.log(this.age);
 };
 
-var instance1 = new SubType("Nicholas", 29);
-instance1.colors.push("black");
+var instance1 = new SubType('Nicholas', 29);
+instance1.colors.push('black');
 console.log(instance1.colors);  // ["red", "blue", "green", "black"]
-instance1.sayName();  // "Nicholas"
+instance1.sayName();  // Nicholas
 instance1.sayAge();  // 29
 
-var instance2 = new SubType("Greg", 27);
+var instance2 = new SubType('Greg', 27);
 console.log(instance2.colors);  // ["red", "blue", "green"]
-instance2.sayName();  // "Greg"
+instance2.sayName();  // Greg
 instance2.sayAge();  // 27
 ```
 
@@ -196,18 +196,18 @@ console.log(person.friends);  // ["Shelly", "Court", "Van", "Rob", "Barbie"]
 function createAnother(original) {
   var clone = object(original);     // 通过调用 object() 函数创建一个新对象
   clone.sayHi = function () {       // 以某种方式来增强这个对象
-    console.log("hi");
+    console.log('hi');
   };
   return clone;                     // 返回这个对象
 }
 
 var person = {
-  name: "Nicholas",
-  friends: ["Shelby", "Court", "Van"]
+  name: 'Nicholas',
+  friends: ['Shelby', 'Court', 'Van']
 };
 
 var anotherPerson = createAnother(person);
-anotherPerson.sayHi();              // "hi"
+anotherPerson.sayHi();              // hi
 ```
 
 在主要考虑对象而不是自定义类型和构造函数的情况下，寄生式继承也是一种有用的模式。前面示范继承模式时使用的 `object()` 函数不是必需的；任何能够返回新对象的函数都使用与此模式。

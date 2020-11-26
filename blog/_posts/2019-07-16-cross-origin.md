@@ -54,7 +54,7 @@ var callbackHandler = function (data) {
 
 ```js
 // 提供 jsonp 服务的 url 地址（不管是什么类型的地址，最终生成的返回值都是一段 javascript 代码）
-var url = "https://api.exmple.com/service.php?callback=callbackHandler";
+var url = 'https://api.exmple.com/service.php?callback=callbackHandler';
 // 创建 script 标签，设置其属性
 var jsonpScript = document.createElement('script');
 jsonpScript.setAttribute('src', url);
@@ -76,16 +76,16 @@ JSONP 和 AJAX 本质上是不同的东西，**AJAX 的核心是通过 `XmlHttpR
 
 ```js
 $.ajax({
-  type: "get",
+  type: 'get',
   async: false,
-  url: "http://api.exmple.com/service.php",
-  dataType: "jsonp",
-  jsonp: "callback",  // 传递给请求处理程序或页面的，用以获得 jsonp 回调函数名的参数名（一般默认为：callback）
-  jsonpCallback: "callbackHandler",  // 自定义的 jsonp 回调函数名称，默认为 jQuery 自动生成的随机函数名，也可以写 "?" ，jQuery 会自动为你处理数据
-  success: function(data) {
+  url: 'http://api.exmple.com/service.php',
+  dataType: 'jsonp',
+  jsonp: 'callback',  // 传递给请求处理程序或页面的，用以获得 jsonp 回调函数名的参数名（一般默认为：callback）
+  jsonpCallback: 'callbackHandler',  // 自定义的 jsonp 回调函数名称，默认为 jQuery 自动生成的随机函数名，也可以写 '?' ，jQuery 会自动为你处理数据
+  success: function (data) {
     alert(data.name);
   },
-  error: function() {
+  error: function () {
     alert('fail');
   }
 });
@@ -93,7 +93,7 @@ $.ajax({
 
 ### CORS
 
-> CORS 是一个 W3C 标准，全称是"跨域资源共享"（Cross-origin resource sharing）它允许浏览器向跨源服务器，发出 XMLHttpRequest 请求，从而克服了 AJAX 只能同源使用的限制。
+> CORS 是一个 W3C 标准，全称是「跨域资源共享」（Cross-origin resource sharing）它允许浏览器向跨源服务器，发出 XMLHttpRequest 请求，从而克服了 AJAX 只能同源使用的限制。
 
 **CORS 需要浏览器和服务器同时支持。IE 8 和 9 需要通过 `XDomainRequest` 来实现。**
 

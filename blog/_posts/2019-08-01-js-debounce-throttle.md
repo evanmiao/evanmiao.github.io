@@ -25,12 +25,12 @@ summary: 函数防抖（debounce）与函数节流（throttle），两者都是�
 function debounce(fn, delay) {
   var timer = null;
 
-  return function (args) {
+  return function () {
     // 取消之前的延时调用
     clearTimeout(timer);
 
-    timer = setTimeout(function () {
-      fn.apply(this, args);
+    timer = setTimeout(() => {
+      fn.apply(this, arguments);
     }, delay);
   };
 }
@@ -48,15 +48,15 @@ function debounce(fn, delay) {
 function throttle(fn, delay) {
   var flag = false;
 
-  return function (args) {
+  return function () {
     // 判断之前的调用是否完成
     if (flag) {
       return false;
     }
     flag = true;
 
-    setTimeout(function () {
-      fn.apply(this, args);
+    setTimeout(() => {
+      fn.apply(this, arguments);
       flag = false;
     }, delay)
   }
@@ -72,12 +72,12 @@ function throttle(fn, delay) {
   // 记录上一次函数触发的时间
   var lastTime = 0;
 
-  return function (args) {
+  return function () {
     // 记录当前函数触发的时间
     var nowTime = Date.now();
 
     if (nowTime - lastTime > delay) {
-      fn.apply(this, args);
+      fn.apply(this, arguments);
       // 同步时间
       lastTime = nowTime;
     }

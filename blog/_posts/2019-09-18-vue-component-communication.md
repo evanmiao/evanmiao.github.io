@@ -2,7 +2,7 @@
 title: Vue 组件通信
 date: 2019-09-18
 tags:
-  - vue
+  - Vue
   - 学习笔记
 summary: 组件化是 Vue 主要思想之一，而组件实例的作用域是相互独立的，而 Vue 又是以数据驱动视图的 MVVM 框架，所以各个组件间的通信传递数据非常重要。
 ---
@@ -56,7 +56,7 @@ export default {
 // 子组件
 <template>
   <div>
-    <p>接收到的数据：{{receivedData}}</p>
+    <p>接收到的数据：{{ receivedData }}</p>
     <button v-on:click="update(childData)">更新</button>
   </div>
 </template>
@@ -97,6 +97,8 @@ export default {
     <Child v-bind.sync="person"></Child>
     ```
 
+注意：Vue 3 中 `v-bind` 的 `.sync` 修饰符和组件的 `model` 选项已移除，可用 `v-model` 作为代替。
+
 ## `$attrs` / `$listeners`
 
 `prop` / `$emit` 只适合直接的父子组件通信，多级嵌套的父子组件如果使用这种方式，需要在每一级都做一遍相关操作，过于麻烦。Vue 2.4 开始提供了 `$attrs` 和 `$listeners` 来解决这个问题。
@@ -104,6 +106,8 @@ export default {
 > `$attrs` 包含了父作用域中不作为 prop 被识别 (且获取) 的 attribute 绑定 (`class` 和 `style` 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (`class` 和 `style` 除外)，并且可以通过 `v-bind="$attrs"` 传入内部组件——在创建高级别的组件时非常有用。
 >
 > `$listeners` 包含了父作用域中的 (不含 `.native` 修饰器的) `v-on` 事件监听器。它可以通过 `v-on="$listeners"` 传入内部组件——在创建更高层次的组件时非常有用。
+
+注意：vue 3 移除了 `$listeners` ，现在 `$attrs` 同时包含所有的属性绑定（包括 `style` 和 `class`）和事件监听器。需要将 `$listeners` 改成 `$attrs` 。
 
 ```vue
 // 父组件
@@ -139,8 +143,8 @@ export default {
 // 子组件 A
 <template>
   <div>
-    <p>A组件props: {{dataToA}}</p>
-    <p>A组件$attrs: {{$attrs}}</p>
+    <p>A组件props: {{ dataToA }}</p>
+    <p>A组件$attrs: {{ $attrs }}</p>
     <!-- A组件调用B组件时，使用 v-on 绑定了 $listeners 属性，所以B组件能直接触发父组件中监听的自定义事件 -->
     <!-- 通过 v-bind 绑定 $attrs 属性，B组件可以直接获取到父组件中传递下来的 props（除了A组件中 prop 声明的） -->
     <ChildB v-bind="$attrs" v-on="$listeners"></ChildB>
@@ -167,8 +171,8 @@ export default {
 // A 组件的子组件 B
 <template>
   <div>
-    <p>B组件props: {{dataToB}}</p>
-    <p>B组件$attrs: {{$attrs}}</p>
+    <p>B组件props: {{ dataToB }}</p>
+    <p>B组件$attrs: {{ $attrs }}</p>
     <button v-on:click="update(childBData)">获取B组件的数据</button>
   </div>
 </template>
@@ -202,6 +206,7 @@ export default {
 - $children: 当前实例的直接子组件。在最底层的子组件拿 `$children` 得到的是个空数组。
   - 注意 `$children` 并不保证顺序，也不是响应式的。如果你发现自己正在尝试使用 `$children` 来进行数据绑定，考虑使用一个数组配合 `v-for` 来生成子组件，并且使用 Array 作为真正的来源。
   - 注意 `$children` 拿到是数组，而 `$parent` 是个对象。
+  - Vue 3 移除了 `$children`
 - ref: 如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例。
 - $refs: 拿到一个对象，包含注册过 `ref` 属性的所有 DOM 元素和组件实例。
   - 注意 `$refs` 也不是响应式的。
@@ -210,7 +215,7 @@ export default {
 // 父组件
 <template>
   <div>
-    <p>{{childData}}</p>
+    <p>{{ childData }}</p>
     <Child ref="child"></Child>
   </div>
 </template>
@@ -293,7 +298,7 @@ export default {
 // 子组件
 <template>
   <div>
-    <p>{{data}}</p>
+    <p>{{ data }}</p>
   </div>
 </template>
 
@@ -380,7 +385,7 @@ export default {
 // B组件，接收事件
 <template>
   <div>
-    <p>{{data}}</p>
+    <p>{{ data }}</p>
   </div>
 </template>
 
@@ -411,6 +416,21 @@ export default {
 beforeDestroy() {
   eventBus.$off('getAData')
 }
+```
+
+### Mitt
+
+vue 3 移除了 `$on` 、 `$off` 和 `$once` 实例方法。在 vue 3 中推荐使用 `$emit` 或 Vuex 。
+
+也可以采用第三方库 [Mitt](https://github.com/developit/mitt) 来实现事件总线。
+
+```js
+import mitt from 'mitt'
+const emitter = mitt()
+// listen to an event
+emitter.on('foo', e => console.log('foo', e))
+// fire an event
+emitter.emit('foo', { a: 'b' })
 ```
 
 ## Vuex
@@ -468,7 +488,7 @@ export default {
 // B组件，接收数据
 <template>
   <div>
-    <p>B组件接收到的数据：{{AMessage}}</p>
+    <p>B组件接收到的数据：{{ AMessage }}</p>
   </div>
 </template>
 

@@ -23,9 +23,8 @@ function bubbleSort(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = 0; j < arr.length - 1 - i; j++) {
       if (arr[j] > arr[j + 1]) {
-        let temp = arr[j]
-        arr[j] = arr[j + 1]
-        arr[j + 1] = temp
+        // 交换两个变量的值
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
       }
     }
   }
@@ -44,9 +43,7 @@ function selectionSort(arr) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[min] > arr[j]) min = j
     }
-    let temp = arr[i]
-    arr[i] = arr[min]
-    arr[min] = temp
+    [arr[i], arr[min]] = [arr[min], arr[i]]
   }
   return arr
 }
@@ -113,17 +110,19 @@ function shellSort(arr) {
   - 分割：递归地把当前序列平均分割成两半。
   - 集成：在保持元素顺序的同时将上一步得到的子序列集成到一起（归并）。
 
+![merge-sort.png](https://i.loli.net/2020/11/21/9TPjmAK3pSCOnw1.png)
+
 ```js
 function mergeSort(arr) {
   if (arr.length < 2) return arr
-  let middle = Math.floor(arr.length / 2),
+  const middle = Math.floor(arr.length / 2),
     left = arr.slice(0, middle),
     right = arr.slice(middle)
   return merge(mergeSort(left), mergeSort(right))
 }
 
 function merge(left, right) {
-  let result = []
+  const result = []
   while (left.length && right.length) {
     if (left[0] < right[0]) {
       result.push(left.shift())
@@ -137,10 +136,214 @@ function merge(left, right) {
 
 ## 快速排序（Quick Sort）
 
+快速排序使用分治法策略来把一个序列分为较小和较大的两个子序列，然后递归地排序两个子序列。
+
+- 步骤：
+  1. 挑选基准值：从数列中挑出一个元素，称为“基准”（pivot）
+  2. 分割：重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（与基准值相等的数可以到任何一边）。在这个分割结束之后，对基准值的排序就已经完成
+  3. 递归排序子序列：递归地将小于基准值元素的子序列和大于基准值元素的子序列排序
+
+简单版本：
+
+```js
+function quickSort(arr) {
+  if (arr.length < 2) return arr
+
+  const left = [],
+    right = [],
+    pivot = arr[0],  // 选取第一个元素为基准
+    pivotList = [pivot]
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < pivot) {
+      left.push(arr[i])
+    } else {
+      right.push(arr[i])
+    }
+  }
+
+  return quickSort(left).concat(pivotList, quickSort(right))
+}
+```
+
+上面简单版本的缺点是，它需要额外存储空间，也就跟归并排序一样不好。额外需要的存储器空间配置，在实际上的实现，也会极度影响速度和缓存的性能。
+
+原地（in-place）分割算法的版本：
+
+```js
+function quickSort(array) {
+  function sort(arr, start = 0, end = arr.length - 1) {
+    if (start >= end) return  // 递归结束
+    let i = start, j = end
+    const pivot = arr[i]  // 选取第一个元素为基准
+    while (i < j) {
+      while (i < j && arr[j] > pivot) {
+        j--
+      }
+      if (i < j) {
+        arr[i] = arr[j]
+        i++
+      }
+      while (i < j && arr[i] < pivot) {
+        i++
+      }
+      if (i < j) {
+        arr[j] = arr[i]
+        j--
+      }
+    }
+    arr[i] = pivot  // 基准归位 此时 i 等于 j
+    sort(arr, start, i - 1)
+    sort(arr, i + 1, end)
+  }
+  sort(array)
+  return array
+}
+```
+
 ## 堆排序（Heap Sort）
+
+指利用堆这种数据结构所设计的一种排序算法。堆是一个近似完全二叉树的结构，并同时满足堆的性质：即子节点的键值或索引总是小于（或者大于）它的父节点。
+
+```js
+function heapSort(arr) {
+  function swap(i, j) {
+    let temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+  }
+
+  function max_heapify(start, end) {
+    let dad = start
+    let son = dad * 2 + 1
+    if (son >= end) return
+    if (son + 1 < end && arr[son] < arr[son + 1]) son++
+    if (arr[dad] <= arr[son]) {
+      swap(dad, son)
+      max_heapify(son, end)
+    }
+  }
+
+  let len = arr.length
+  // 初始化，i 从最后一个父节点开始调整
+  for (let i = Math.floor(len / 2) - 1; i >= 0; i--) max_heapify(i, len)
+  // 先将第一个元素和已排好元素前一位做交换，再从新调整，直到排序完毕
+  for (let i = len - 1; i > 0; i--) {
+    swap(0, i)
+    max_heapify(0, i)
+  }
+
+  return arr
+}
+```
 
 ## 计数排序（Counting Sort）
 
+计数排序使用一个额外的数组 C ，其中第 i 个元素是待排序数组中值等于 i 的元素的个数。然后根据数组 C 将待排序数组中的元素排到正确的位置。
+
+```js
+function countingSort(arr) {
+  const C = []
+  let sortedIndex = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (C[arr[i]] >= 1) {
+      C[arr[i]]++
+    } else {
+      C[arr[i]] = 1
+    }
+  }
+  for (let j = 0; j < C.length; j++) {
+    if (C[j]) {
+      while (C[j] > 0) {
+        arr[sortedIndex++] = j
+        C[j]--
+      }
+    }
+  }
+  return arr
+}
+```
+
 ## 桶排序（Bucket Sort）
 
+将阵列分到有限数量的桶里。每个桶再个别排序（有可能再使用别的排序演算法或是以递回方式继续使用桶排序进行排序）。
+
+- 步骤：
+  1. 设置一个定量的阵列当作空桶子。
+  2. 寻访序列，并且把项目一个一个放到对应的桶子去。
+  3. 对每个不是空的桶子进行排序。
+  4. 从不是空的桶子里把项目再放回原来的序列中。
+
+```js
+function bucketSort(arr, bucketNum) {
+  function swap(arr, i, j) {
+    let temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+  }
+
+  const max = Math.max(...arr)
+  const min = Math.min(...arr)
+
+  const buckets = []
+  const bucketsSize = Math.floor((max - min) / bucketNum) + 1
+
+  for (let i = 0; i < arr.length; i++) {
+    const index = Math.floor(arr[i] / bucketsSize)
+    if (!buckets[index]) buckets[index] = []
+    buckets[index].push(arr[i])
+
+    for (let j = buckets[index].length; j > 0; j--) {
+      if (buckets[index][j] < buckets[index][j - 1]) {
+        swap(buckets[index], j, j - 1)
+      }
+    }
+  }
+
+  arr.length = 0
+  for (let i = 0; i < buckets.length; i++) {
+    if (buckets[i]) arr = arr.concat(buckets[i])
+  }
+  return arr
+}
+```
+
 ## 基数排序（Radix Sort）
+
+一种非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。由于整数也可以表达字符串（比如名字或日期）和特定格式的浮点数，所以基数排序也不是只能使用于整数。
+
+基数排序的方式可以采用LSD（Least significant digital）或MSD（Most significant digital），LSD的排序方式由键值的最右边开始，而MSD则相反，由键值的最左边开始。
+
+基数排序 vs 计数排序 vs 桶排序：
+
+- 计数排序：每个桶只存储单一键值；
+- 桶排序：每个桶存储一定范围的数值；
+- 基数排序：根据键值的每位数字来分配桶；
+
+```js
+//LSD Radix Sort
+var counter = []
+function radixSort(arr, maxDigit) {
+  var mod = 10
+  var dev = 1
+  for (var i = 0; i < maxDigit; i++, dev *= 10, mod *= 10) {
+    for (var j = 0; j < arr.length; j++) {
+      var bucket = parseInt((arr[j] % mod) / dev)
+      if (counter[bucket] == null) {
+        counter[bucket] = []
+      }
+      counter[bucket].push(arr[j])
+    }
+    var pos = 0
+    for (var j = 0; j < counter.length; j++) {
+      var value = null
+      if (counter[j] != null) {
+        while ((value = counter[j].shift()) != null) {
+          arr[pos++] = value
+        }
+      }
+    }
+  }
+  return arr
+}
+```

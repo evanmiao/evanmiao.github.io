@@ -71,7 +71,7 @@ bar.a.b = 2;
 console.log(foo.a.b);  // 1
 ```
 
-但是该方法只能处理对象和数组，不能处理 `Undefined` 、 `Symbol` 和一写复杂对象比如 `Function` 、 `Date` 、 `RegExp` 、 `Set` 、 `Map` 、 `ArrayBuffer` 等。
+但是该方法只能处理对象和数组，不能处理 `Undefined` 、 `Symbol` 和一些复杂对象比如 `Function` 、 `Date` 、 `RegExp` 、 `Set` 、 `Map` 、 `ArrayBuffer` 等。
 
 ```js
 let obj = {
