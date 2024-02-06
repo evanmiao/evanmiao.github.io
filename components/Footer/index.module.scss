@@ -1,0 +1,47 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 3rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--rp-c-divider-light);
+
+  .copyright {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @media (max-width: 48rem) {
+      display: block;
+    }
+
+    &-item {
+      flex: 0 0 auto;
+      padding: 0 0.75rem;
+      border-right: 1px solid var(--rp-c-text-2);
+      line-height: 1rem;
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: var(--rp-c-text-2);
+
+      @media (max-width: 48rem) {
+        border-right: none;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+
+      & > a {
+        font-weight: 500;
+        transition: color 0.25s;
+
+        &:hover {
+          color: var(--rp-c-brand);
+        }
+      }
+    }
+  }
+}

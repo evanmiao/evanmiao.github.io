@@ -1,0 +1,23 @@
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  .tag {
+    display: inline-flex;
+    padding: 0.25rem 1rem;
+    margin: 0 1rem 0.75rem 0;
+    font-size: 1rem;
+    color: var(--rp-c-text-1);
+    border: 1px solid var(--rp-home-feature-bg);
+    background-color: var(--rp-home-feature-bg);
+    border-radius: 0.25rem;
+    transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--rp-c-brand-dark);
+      border-color: var(--rp-c-brand-dark);
+      background-color: var(--rp-home-feature-hover-bg);
+    }
+  }
+}

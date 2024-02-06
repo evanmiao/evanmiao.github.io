@@ -1,20 +1,32 @@
 {
-  "name": "vuepress-blog",
+  "name": "rspress-blog",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vuepress dev blog",
-    "build": "vuepress build blog"
+    "dev": "rspress dev",
+    "build": "rspress build",
+    "preview": "rspress preview"
   },
   "author": "Evan Miao",
   "license": "ISC",
+  "volta": {
+    "node": "20.11.0"
+  },
+  "dependencies": {
+    "@giscus/react": "^2.4.0",
+    "dayjs": "^1.11.10",
+    "rc-pagination": "^4.0.4",
+    "react-ga4": "^2.1.0",
+    "rspress": "^1.11.1"
+  },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.7.0",
-    "@vuepress/plugin-google-analytics": "^1.7.0",
-    "@vuepress/plugin-medium-zoom": "^1.7.0",
-    "@vuepress/theme-blog": "^2.3.2",
-    "vuepress": "^1.7.0"
+    "@rspress/shared": "^1.11.1",
+    "@types/node": "^16.18.76",
+    "@types/react": "^18.2.48",
+    "gray-matter": "^4.0.3",
+    "remove-markdown": "^0.5.0"
   }
 }

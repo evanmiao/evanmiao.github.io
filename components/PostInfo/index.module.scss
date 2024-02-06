@@ -1,0 +1,28 @@
+.post-info {
+  margin-bottom: 20px;
+
+  .info {
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+    line-height: 2;
+    font-size: 0.875rem;
+    color: var(--rp-c-text-2);
+
+    svg {
+      width: 0.875rem;
+      height: 0.875rem;
+      margin-right: 0.375rem;
+    }
+
+    a {
+      margin-right: 0.375rem;
+      font-weight: normal;
+      color: inherit;
+
+      &:hover {
+        color: var(--rp-c-brand);
+      }
+    }
+  }
+}

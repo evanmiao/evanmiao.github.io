@@ -1,0 +1,25 @@
+.post-list {
+  .post {
+    display: flex;
+    align-items: baseline;
+    margin-top: 0.5rem;
+
+    &-date {
+      flex: none;
+      width: 5.3rem;
+      font-weight: 500;
+      font-size: 0.75rem;
+      color: var(--rp-c-text-1);
+    }
+
+    &-link {
+      font-size: 1rem;
+      color: var(--rp-c-text-1);
+      transition: color 0.2s;
+
+      &:hover {
+        color: var(--rp-c-brand);
+      }
+    }
+  }
+}

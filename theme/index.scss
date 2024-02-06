@@ -1,0 +1,23 @@
+html {
+  scroll-behavior: smooth;
+}
+
+#root > div {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 5rem;
+
+  @media (max-width: 48rem) {
+    padding-bottom: 6.75rem;
+  }
+}
+
+.custom-layout {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+
+  @media (max-width: 60rem) {
+    padding: 2.25rem 1.5rem;
+  }
+}

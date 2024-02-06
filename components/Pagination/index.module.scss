@@ -1,0 +1,61 @@
+.pagination {
+  display: flex;
+  margin: 1rem 0;
+
+  :global {
+    & > li > a {
+      position: relative;
+      padding: 0.375rem 0.75rem;
+      margin-left: -1px;
+      color: var(--rp-c-text-code);
+      border: 1px solid var(--rp-c-divider-light);
+      background-color: var(--rp-home-feature-bg);
+      transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+      cursor: pointer;
+
+      &:hover {
+        z-index: 3;
+        color: var(--rp-c-brand-light);
+        border-color: var(--rp-c-brand-light);
+        background-color: var(--rp-home-feature-hover-bg);
+      }
+    }
+
+    @media (max-width: 33rem) {
+      & > .rc-pagination-item > a,
+      & > .rc-pagination-jump-prev > a,
+      & > .rc-pagination-jump-next > a {
+        display: none;
+      }
+    }
+
+    & > .rc-pagination-prev > a {
+      margin-left: 0;
+      border-top-left-radius: 0.25rem;
+      border-bottom-left-radius: 0.25rem;
+    }
+
+    & > .rc-pagination-next > a {
+      border-top-right-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+    }
+
+    & > .rc-pagination-item-active > a,
+    & > .rc-pagination-item-active > a:hover {
+      z-index: 2;
+      color: var(--rp-c-bg);
+      border-color: var(--rp-c-brand-light);
+      background-color: var(--rp-c-brand-light);
+      cursor: default;
+    }
+
+    & > .rc-pagination-disabled > a,
+    & > .rc-pagination-disabled > a:hover {
+      z-index: 2;
+      color: var(--rp-c-text-4);
+      border-color: var(--rp-c-text-4);
+      background-color: var(--rp-c-bg);
+      cursor: not-allowed;
+    }
+  }
+}
