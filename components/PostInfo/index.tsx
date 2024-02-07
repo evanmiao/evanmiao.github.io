@@ -51,7 +51,7 @@ const PostInfo = () => {
           <line x1="7" y1="7" x2="7" y2="7"></line>
         </svg>
         {postInfo.tags.map((tag) => (
-          <Link key={tag} href={normalizeHrefInRuntime(`/tags?tag=${tag}/`)}>
+          <Link key={tag} href={normalizeHrefInRuntime(`/tags/index.html?tag=${tag}/`)}>
             {tag}
           </Link>
         ))}
